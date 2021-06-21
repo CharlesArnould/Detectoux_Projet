@@ -34,6 +34,7 @@
   box-shadow: 6px 8px 8px #2e3244;
   font-weight: bold;
   display: flex;
+  flex-direction: column;
 }
 #analyse {
   position: absolute;
@@ -44,6 +45,7 @@
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
+  flex-direction: column;
 }
 #message {
   position: absolute;
@@ -56,6 +58,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   border-color: #f1895c;
   border-style: solid;

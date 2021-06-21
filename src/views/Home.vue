@@ -1,19 +1,24 @@
 <template>
-  <div>
-    <div class="rectangle">
-      <p>
-        Bienvenue sur<b> Detectoux</b> ! <br /><br />
-        En quelques étapes, obtenez un diagnostic rapide sur la présence de la<b>
-          Covid-19</b
-        >.<br /><br />
-        Si vous possédez un test Covid-19, qu’il soit positif ou négatif, vous
-        pouvez nous aider à améliorer le diagnostic en contribuant à notre base
-        de données.
-      </p>
+  <div class="home">
+    <div class="home_wrapper">
+      <div class="home_wrapper_rectangle">
+        <p>
+          Bienvenue sur<b> Detectoux</b> ! <br /><br />
+          En quelques étapes, obtenez un diagnostic rapide sur la présence de
+          la<b> Covid-19</b>.<br /><br />
+          Si vous possédez un test Covid-19, qu’il soit positif ou négatif, vous
+          pouvez nous aider à améliorer le diagnostic en contribuant à notre
+          base de données.
+        </p>
+      </div>
     </div>
-    <div class="choix">
-      <button><b>Je me teste</b></button>
-      <button><b>Je contribue</b></button>
+    <div class="home_choix">
+      <div class="home_choix_button1">
+        <button><b>Je me teste</b></button>
+      </div>
+      <div class="home_choix_button2">
+        <button><b>Je contribue</b></button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,14 +33,27 @@ export default {
 </script>
 
 <style scoped>
-.rectangle {
-  position: absolute;
-  width: 90%;
-  height: 40%;
-  margin-left: 5%;
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.home_wrapper {
+  display: flex;
+  /* height: vh; */
+}
+
+.home_wrapper_rectangle {
   box-shadow: 6px 8px 8px #2e3244;
   background: #c4c4c4;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -43,10 +61,9 @@ p {
   font-style: normal;
   font-weight: normal;
   float: left;
-  display: flex;
   color: #2e3244;
   text-align: center;
-  margin: auto;
+  margin: 0;
   align-items: center;
   justify-content: center;
 }
@@ -54,7 +71,7 @@ button {
   box-shadow: 6px 8px 8px #2e3244;
   background: #f1895c;
 }
-.choix {
-  margin-left: 5%;
+.home_choix {
+  margin: 100px;
 }
 </style>
