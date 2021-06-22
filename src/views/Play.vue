@@ -5,7 +5,7 @@
     <div id="grandRectangle">
       <p>Maintenez le micro appuyé et toussez !!</p>
       <div>
-        <button v-on:click="self.location.href = 'etape3.vue'"></button>
+        <button v-on:click="self.location.href = 'Replay.vue'"></button>
       </div>
     </div>
   </div>
@@ -40,8 +40,8 @@ button {
   height: 64px;
   left: 715px;
   top: 397px;
-  background: url(image.png);
 }
+
 p {
   position: absolute;
   width: 600px;
