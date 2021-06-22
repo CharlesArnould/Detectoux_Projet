@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <div id="resultats">
-      <p><b>Résultats</b></p>
+  <div class="test">
+    <div class="test_wrapper">
+      <div id="resultats">
+        <p><b>Résultats</b></p>
+      </div>
     </div>
     <div id="analyse">
       <p>
