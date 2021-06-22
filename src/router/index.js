@@ -4,6 +4,8 @@ import Contribue0 from '../views/Contribue0.vue'
 import Contribue3 from '../views/Contribue3.vue'
 import Test3_1 from '../views/Test3_1.vue'
 import Test3_2 from '../views/Test3_2.vue'
+import Play from '../views/Play.vue'
+import Replay from '../views/Replay.vue'
 
 const routes = [
   {
@@ -31,6 +33,16 @@ const routes = [
     path: '/',
     name: 'Test3_2',
     component: Test3_2
+  },
+  {
+    path: '/',
+    name: 'Play',
+    component: Play
+  },
+  {
+    path: '/',
+    name: 'Replay',
+    component: Replay
   },
 ]
 
