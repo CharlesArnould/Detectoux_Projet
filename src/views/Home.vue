@@ -13,10 +13,10 @@
       </div>
     </div>
     <div class="home_choix">
-      <div class="home_choix_button1">
-        <button><b>Je me teste</b></button>
+      <div class="home_choix_button">
+        <button v-on:click="../views/Test3_1.vue"><b>Je me teste</b></button>
       </div>
-      <div class="home_choix_button2">
+      <div class="home_choix_button">
         <button><b>Je contribue</b></button>
       </div>
     </div>
@@ -37,14 +37,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   flex-direction: column;
 }
 
 .home_wrapper {
   display: flex;
-  /* height: vh; */
+  height: 40vh;
+  width: 90vw;
 }
 
 .home_wrapper_rectangle {
@@ -55,6 +56,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -63,15 +65,19 @@ p {
   float: left;
   color: #2e3244;
   text-align: center;
-  margin: 0;
   align-items: center;
   justify-content: center;
 }
+
 button {
   box-shadow: 6px 8px 8px #2e3244;
   background: #f1895c;
+  margin: 10px;
+  height: 6vh;
+  width: 50vw;
 }
+
 .home_choix {
-  margin: 100px;
+  margin: 120px;
 }
 </style>

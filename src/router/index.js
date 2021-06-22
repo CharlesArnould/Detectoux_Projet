@@ -32,11 +32,6 @@ const routes = [
     name: 'Test3_2',
     component: Test3_2
   },
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
 ]
 
 const router = createRouter({
