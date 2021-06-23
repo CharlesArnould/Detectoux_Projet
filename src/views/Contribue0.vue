@@ -1,8 +1,9 @@
 <template>
   <div id="rectangle">
     <p>J’accepte de partager mes données avec l’équipe Detectoux</p>
-    <button></button>
-    <!-- Passer à la page suivante -->
+    <router-link to="/Contribue1">
+      <button></button>
+    </router-link>
   </div>
 </template>
 
@@ -21,7 +22,6 @@
   top: 30%;
 }
 button {
-  position: absolute;
   width: 21px;
   height: 21px;
   background: #ffffff;
