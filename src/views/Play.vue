@@ -3,9 +3,12 @@
     <p>Etape n°2</p>
 
     <div id="grandRectangle">
-      <p>Maintenez le micro appuyé et toussez !</p>
-      <div>
-        <button v-on:click="self.location.href = 'Replay.vue'"></button>
+      <div class="home_choix_button">
+        <router-link to="/Test1">
+          <button>
+            <b>Maintenez le bouton appuyé et toussez :')</b>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
