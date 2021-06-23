@@ -14,12 +14,16 @@
     </div>
     <div class="home_choix">
       <div class="home_choix_button">
-        <button v-on:click="self.location.href = 'Test3_1.vue'">
-          <b>Je me teste</b>
-        </button>
+        <router-link to="/Test1">
+          <button>
+            <b>Je me teste</b>
+          </button>
+        </router-link>
       </div>
       <div class="home_choix_button">
-        <button><b>Je contribue</b></button>
+        <router-link to="/Contribue0">
+          <button><b>Je contribue</b></button>
+        </router-link>
       </div>
     </div>
   </div>
