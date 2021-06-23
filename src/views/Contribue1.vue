@@ -19,8 +19,27 @@
           <br />
           <div class="contribue1_wrapper_rectangle_form_sexe">
             <label for="sexe">Sexe :&nbsp;</label>
-            <input type="date" id="ddn" required />
+            <select id="sexe" required>
+              <option value="">Choix</option>
+              <option value="femme">Femme</option>
+              <option value="homme">Homme</option>
+            </select>
           </div>
+          <div class="contribue1_wrapper_rectangle_form_test">
+            <p>Test au Covid-19 :</p>
+            <div class="contribue1_wrapper_rectangle_form_test_checkbox">
+              <!-- Mettre 1 seul choix -->
+              <div class="contribue1_wrapper_rectangle_form_test_checkbox_P">
+                <input type="checkbox" id="testP" required />
+                <label for="testP">Positif</label>
+              </div>
+              <div class="contribue1_wrapper_rectangle_form_test_checkbox_N">
+                <input type="checkbox" id="testN" required />
+                <label for="testN">Négatif</label>
+              </div>
+            </div>
+          </div>
+          <br />
           <div class="contribue1_wrapper_rectangle_form_button">
             <router-link to="/Play">
               <button>
@@ -73,7 +92,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px;
+  padding: 60px;
 }
 
 .contribue1_wrapper_rectangle_form {
@@ -94,13 +113,9 @@
   align-items: center;
 }
 
-.contribue1_wrapper_rectangle_form_button {
-  /* margin: 10px; */
-}
-
 button {
   background: #f1895c;
-  margin: 10px;
+  margin: 5px;
   height: 6vh;
   width: 50vw;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
