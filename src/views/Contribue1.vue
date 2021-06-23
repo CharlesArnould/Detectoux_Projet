@@ -1,28 +1,44 @@
 <template>
-  <div class="home">
-    <div class="home_choix">
-      <div class="home_choix_button">
-        <router-link to="/Play">
-          <button>
-            <b>Play</b>
-          </button>
-        </router-link>
+  <div class="contribue1">
+    <div class="contribue1_étape1">
+      <p><b>Etape 1</b></p>
+    </div>
+    <div class="contribue1_wrapper">
+      <div class="contribue1_wrapper_rectangle">
+        <div class="contribue1_wrapper_rectangle_form">
+          <div class="contribue1_wrapper_rectangle_form_texte">
+            <p>
+              Pour commencer, veuillez renseigner quelques informations à votre
+              sujet :
+            </p>
+          </div>
+          <div class="contribue1_wrapper_rectangle_form_ddn">
+            <label for="ddn">Date de naissance :&nbsp;</label>
+            <input type="date" id="ddn" required />
+          </div>
+          <br />
+          <div class="contribue1_wrapper_rectangle_form_sexe">
+            <label for="sexe">Sexe :&nbsp;</label>
+            <input type="date" id="ddn" required />
+          </div>
+          <div class="contribue1_wrapper_rectangle_form_button">
+            <router-link to="/Play">
+              <button>
+                <b>Etape suivante</b>
+              </button>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Home",
-  props: {
-    msg: String,
-  },
-};
 </script>
 
 <style scoped>
-.home {
+.contribue1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,19 +47,65 @@ export default {
   flex-direction: column;
 }
 
-.home_wrapper {
+.contribue1_étape1 {
+  width: 25vw;
+  height: 7vh;
+  background: #f1895c;
+  box-shadow: 6px 8px 8px #2e3244;
+  font-weight: bold;
   display: flex;
-  height: 40vh;
-  width: 90vw;
+  flex-direction: column;
+  margin: 20px;
 }
 
-.home_wrapper_rectangle {
+.contribue1_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 90vw;
+  margin: 80px;
+}
+
+.contribue1_wrapper_rectangle {
   box-shadow: 6px 8px 8px #2e3244;
   background: #c4c4c4;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 100px;
+}
+
+.contribue1_wrapper_rectangle_form {
+  display: flex;
+  align-items: center;
   flex-direction: column;
+}
+
+.contribue1_wrapper_rectangle_form_texte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contribue1_wrapper_rectangle_form_ddn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contribue1_wrapper_rectangle_form_button {
+  /* margin: 10px; */
+}
+
+button {
+  background: #f1895c;
+  margin: 10px;
+  height: 6vh;
+  width: 50vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
 }
 
 p {
@@ -56,17 +118,5 @@ p {
   text-align: center;
   align-items: center;
   justify-content: center;
-}
-
-button {
-  box-shadow: 6px 8px 8px #2e3244;
-  background: #f1895c;
-  margin: 10px;
-  height: 6vh;
-  width: 50vw;
-}
-
-.home_choix {
-  margin: 120px;
 }
 </style>
