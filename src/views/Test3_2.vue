@@ -1,16 +1,23 @@
 <template>
-  <div>
-    <div id="resultats">
-      <p>Résultats</p>
+  <div class="test">
+    <div class="test_resultats">
+      <p><b>Résultats</b></p>
     </div>
-    <div id="analyse">
-      <p>
-        Après analyse de votre toux, nous avons détécté une possible présence de
-        la Covid-19 à hauteur de :
-      </p>
-      <!-- Afficher le pourcentage -->
+    <div class="test_wrapper">
+      <div class="test_wrapper_analyse">
+        <div class="test_wrapper_analyse_texte">
+          <p>
+            Après analyse de votre toux, nous avons détécté une possible
+            présence de la Covid-19 à hauteur de :
+          </p>
+        </div>
+        <div class="test_wrapper_analyse_pourcentage">
+          <!-- Afficher le pourcentage -->
+          <p><b>87%</b></p>
+        </div>
+      </div>
     </div>
-    <div id="message">
+    <div class="test_message">
       <p>
         Merci de contacter votre médecin au plus vite et de
         <strong>&nbsp;respecter les gestes barrières</strong>
@@ -24,45 +31,60 @@
 </script>
 
 <style scoped>
-#resultats {
-  position: absolute;
-  width: 25%;
-  height: 7%;
-  left: 40%;
-  top: 10%;
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.test_resultats {
+  width: 25vw;
+  height: 7vh;
   background: #f1895c;
   box-shadow: 6px 8px 8px #2e3244;
   font-weight: bold;
   display: flex;
   flex-direction: column;
+  margin: 30px;
 }
-#analyse {
-  position: absolute;
-  width: 90%;
-  height: 30%;
-  left: 5%;
-  top: 25%;
+
+.test_wrapper_analyse {
+  width: 90vw;
+  height: 30vh;
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
   flex-direction: column;
+  margin: 30px;
 }
-#message {
-  position: absolute;
-  width: 90%;
-  height: 25%;
-  left: 5%;
-  top: 60%;
+
+.test_wrapper_analyse_texte {
+  margin: 20px;
+}
+
+.test_wrapper_analyse_pourcentage {
+  font-weight: bold;
+  margin: 15px;
+}
+
+.test_message {
+  width: 90vw;
+  height: 20vh;
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 30px;
 
   border-color: #f1895c;
   border-style: solid;
 }
+
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -70,7 +92,7 @@ p {
   text-align: center;
   color: #2e3244;
   font-weight: normal;
-  margin: auto;
   align-items: center;
+  justify-content: center;
 }
 </style>

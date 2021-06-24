@@ -25,19 +25,14 @@
               <option value="homme">Homme</option>
             </select>
           </div>
+          <br />
           <div class="contribue1_wrapper_rectangle_form_test">
-            <p>Test au Covid-19 :</p>
-            <div class="contribue1_wrapper_rectangle_form_test_checkbox">
-              <!-- Mettre 1 seul choix -->
-              <div class="contribue1_wrapper_rectangle_form_test_checkbox_P">
-                <input type="checkbox" id="testP" required />
-                <label for="testP">Positif</label>
-              </div>
-              <div class="contribue1_wrapper_rectangle_form_test_checkbox_N">
-                <input type="checkbox" id="testN" required />
-                <label for="testN">Négatif</label>
-              </div>
-            </div>
+            <label for="test">Test au Covid-19 :&nbsp;</label>
+            <select id="test" required>
+              <option value="">Choix</option>
+              <option value="positif">Positif</option>
+              <option value="negatif">Négatif</option>
+            </select>
           </div>
           <br />
           <div class="contribue1_wrapper_rectangle_form_button">
@@ -111,6 +106,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.contribue1_wrapper_rectangle_form_test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button {

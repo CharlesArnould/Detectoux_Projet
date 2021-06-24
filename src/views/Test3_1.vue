@@ -5,11 +5,13 @@
     </div>
     <div class="test_wrapper">
       <div class="test_wrapper_analyse">
-        <p>
-          Après analyse de votre toux, nous avons détécté une possible présence
-          de la Covid-19 à hauteur de :
-        </p>
-        <div class="test_wrapper_pourcentage">
+        <div class="test_wrapper_analyse_texte">
+          <p>
+            Après analyse de votre toux, nous avons détécté une possible
+            présence de la Covid-19 à hauteur de :
+          </p>
+        </div>
+        <div class="test_wrapper_analyse_pourcentage">
           <!-- Afficher le pourcentage -->
           <p><b>4%</b></p>
         </div>
@@ -33,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
   flex-direction: column;
 }
@@ -46,7 +48,7 @@
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  /* margin */
+  margin: 30px;
 }
 
 .test_wrapper_analyse {
@@ -56,21 +58,28 @@
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
   flex-direction: column;
+  margin: 30px;
 }
 
-.test_wrapper_pourcentage {
+.test_wrapper_analyse_texte {
+  margin: 20px;
+}
+
+.test_wrapper_analyse_pourcentage {
   font-weight: bold;
+  margin: 20px;
 }
 
 .test_message {
-  width: 90%;
-  height: 25%;
+  width: 90vw;
+  height: 20vh;
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 30px;
 
   border-color: #f1895c;
   border-style: solid;
@@ -83,8 +92,13 @@ p {
   text-align: center;
   color: #2e3244;
   font-weight: normal;
-  margin: auto;
   align-items: center;
   justify-content: center;
 }
 </style>
+
+<p>
+        Merci de contacter votre médecin au plus vite et de
+        <strong>&nbsp;respecter les gestes barrières</strong>
+        &nbsp;afin de protéger vos proches.
+      </p>
