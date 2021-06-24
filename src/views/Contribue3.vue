@@ -19,12 +19,6 @@
   flex-direction: column;
 }
 
-.contribue3_wrapper {
-  display: flex;
-  height: 40vh;
-  width: 90vw;
-}
-
 .contribue3_rectangle {
   height: 40vh;
   width: 90vw;
