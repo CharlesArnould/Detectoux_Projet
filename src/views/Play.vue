@@ -1,11 +1,12 @@
 <template>
-  <div class="Play">
+  <div class="play">
     <div class="play_etape2">
-      <p><b>Etape n°2</b></p>
+      <p><b>Etape 2</b></p>
     </div>
-    <div class="gros_rectangle">
-      <div class="rond_micro">
-        <div class="micro">
+
+    <div class="play_rectangle">
+      <div class="play_rectangle_rond">
+        <div class="play_rectangle_rond_micro">
           <router-link to="/Replay">
             <button>
               <img
@@ -15,9 +16,9 @@
           </router-link>
         </div>
       </div>
-    </div>
-    <div class="texte_micro">
-      <p><b>Maintenez le micro appuyé et toussez</b></p>
+      <div class="play_rectangle_texte">
+        <p><b>Maintenez le micro appuyé et toussez</b></p>
+      </div>
     </div>
   </div>
 </template>
@@ -27,16 +28,16 @@
 
 
 <style scoped>
-#Play {
+.play {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
   flex-direction: column;
 }
 
-#play_etape2 {
+.play_etape2 {
   width: 25vw;
   height: 7vh;
   background: #f1895c;
@@ -47,55 +48,56 @@
   margin: 20px;
 }
 
-#micro {
-  position: absolute;
-  width: 135px;
-  height: 132px;
-  left: 668px;
-  top: 363px;
+.play_rectangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 50vh;
+  flex-direction: column;
+
+  background: #c4c4c4;
+}
+
+.play_rectangle_rond {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 6px 8px 8px #2e3244;
+  width: 50vw;
+  height: 30vh;
 
   background: #516079;
 }
 
-#rond_micro  {
-  position: absolute;
-  width: 135px;
-  height: 132px;
-  left: 668px;
-  top: 363px;
+.play_rectangle_rond_micro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  height: 10vh;
 
   background: #516079;
 }
 
-#texte_micro {
-  position: absolute;
-  width: 600px;
-  height: 50px;
-  left: 433px;
-  top: 545px;
+.play_rectangle_texte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 50vh;
 
   font-family: Raleway;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 14px;
+  line-height: 16px;
   text-align: center;
 
   color: #2e3244;
 }
 
-#gros_rectangle {
-  position: absolute;
-  width: 1266px;
-  height: 281px;
-  left: 84px;
-  top: 336px;
-
-  background: #c4c4c4;
-}
-
 button {
-  position: absolute;
   width: 33px;
   height: 64px;
   left: 715px;
@@ -103,18 +105,14 @@ button {
 }
 
 p {
-  position: absolute;
-  width: 600px;
-  height: 50px;
-  left: 433px;
-  top: 545px;
-
-  font-family: Raleway;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
-  text-align: center;
+  float: left;
   color: #2e3244;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 </style>
