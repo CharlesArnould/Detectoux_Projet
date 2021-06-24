@@ -96,3 +96,9 @@ p {
   justify-content: center;
 }
 </style>
+
+<p>
+        Merci de contacter votre médecin au plus vite et de
+        <strong>&nbsp;respecter les gestes barrières</strong>
+        &nbsp;afin de protéger vos proches.
+      </p>
