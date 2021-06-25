@@ -27,7 +27,7 @@
           </div>
           <br />
           <div class="test1_wrapper_rectangle_form_button">
-            <router-link to="/Play">
+            <router-link to="/Replay">
               <button>
                 <b>Etape suivante</b>
               </button>

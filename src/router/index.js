@@ -8,6 +8,7 @@ import Test3_1 from '../views/Test3_1.vue'
 import Test3_2 from '../views/Test3_2.vue'
 import Play from '../views/Play.vue'
 import Replay from '../views/Replay.vue'
+import audio from '../views/audio.vue'
 
 const routes = [
   {
@@ -56,6 +57,11 @@ const routes = [
     path: '/Replay',
     name: 'Replay',
     component: Replay
+  },
+  {
+    path: '/audio',
+    name: 'audio',
+    component: audio
   },
 ]
 

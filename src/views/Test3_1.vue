@@ -24,6 +24,13 @@
         !
       </p>
     </div>
+    <div class="test_button">
+      <router-link to="/">
+        <button>
+          <b>Accueil</b>
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -79,7 +86,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 30px;
+  margin: 20px;
 
   border-color: #f1895c;
   border-style: solid;
@@ -95,10 +102,15 @@ p {
   align-items: center;
   justify-content: center;
 }
-</style>
 
-<p>
-        Merci de contacter votre médecin au plus vite et de
-        <strong>&nbsp;respecter les gestes barrières</strong>
-        &nbsp;afin de protéger vos proches.
-      </p>
+button {
+  background: #f1895c;
+  margin: 10px;
+  height: 6vh;
+  width: 30vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
+  box-shadow: 6px 8px 8px #2e3244;
+}
+</style>
