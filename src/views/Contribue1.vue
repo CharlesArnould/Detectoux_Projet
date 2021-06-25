@@ -49,13 +49,6 @@
 </template>
 
 <script>
-export default {
-  name: "remplissage_formulaire",
-  components: {
-    CusButton,
-    Loader,
-  },
-};
 </script>
 
 <style scoped>
