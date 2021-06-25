@@ -3,6 +3,13 @@
     <div class="contribue3_rectangle">
       <p>Nous vous remercions de votre contribution !</p>
     </div>
+    <div class="test_button">
+      <router-link to="/">
+        <button>
+          <b>Accueil</b>
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -20,8 +27,9 @@
 }
 
 .contribue3_rectangle {
-  height: 40vh;
+  height: 30vh;
   width: 90vw;
+  margin: 30px;
   box-shadow: 6px 8px 8px #2e3244;
   background: #c4c4c4;
   display: flex;
@@ -40,5 +48,16 @@ p {
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+button {
+  background: #f1895c;
+  margin: 50px;
+  height: 6vh;
+  width: 30vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
+  box-shadow: 6px 8px 8px #2e3244;
 }
 </style>
