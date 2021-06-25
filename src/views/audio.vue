@@ -115,7 +115,7 @@ export default {
     stop() {
       if (!this.isRecording) return;
       this.$_mediaRecorder.stop();
-      this.$_stream.getTracks().forEach(t => t.stop());
+      this.$_stream.getTracks().forEach((t) => t.stop());
       this.$_mic.close();
       Tone.Transport.stop();
     },
@@ -154,34 +154,14 @@ export default {
       if (!this.$_stream) {
         return;
       }
-//       /*
-//       <!-- load OpusMediaRecorder.umd.js. OpusMediaRecorder will be loaded. -->
-//       <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
-//       <!-- load encoderWorker.umd.js. This should be after OpusMediaRecorder. -->
-//       <!-- This script tag will create OpusMediaRecorder.encoderWorker. -->
-//       <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
-//       <script>
-// // // Check if MediaRecorder available.
-// // if (!window.MediaRecorder) {
-// //   window.MediaRecorder = OpusMediaRecorder;
-// // }
-// // // Check if a target format (e.g. audio/ogg) is supported.
-// // else if (!window.MediaRecorder.isTypeSupported("audio/ogg;codecs=opus")) {
-// //   window.MediaRecorder = OpusMediaRecorder;
-// // }
-// //
-</script>
-//       <script type="text/javascript" src="//webrtchacks.github.io/adapter/adapter-latest.js"></script>
-//       <!-- <script type="text/javascript" src="/js/audio-service/StartAudioContext.js"></script>
-//       <script type="text/javascript" src="/js/audio-service/Tone.js"></script> -->
-//       */
+
       await loadScripts([
         // load OpusMediaRecorder.umd.js. OpusMediaRecorder will be loaded.
         "https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js",
         // load encoderWorker.umd.js. This should be after OpusMediaRecorder.
         // This script tag will create OpusMediaRecorder.encoderWorker.
         "https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js",
-        "https://webrtchacks.github.io/adapter/adapter-latest.js"
+        "https://webrtchacks.github.io/adapter/adapter-latest.js",
         // I've included NPM ones
         // '/js/audio-service/StartAudioContext.js',
         // '/js/audio-service/Tone.js',
@@ -190,7 +170,7 @@ export default {
       // Check if MediaRecorder available.
       if (!CustomMediaRecorder) {
         if (!window.OpusMediaRecorder) {
-          console.error('OpusMediaRecorder is not defined');
+          console.error("OpusMediaRecorder is not defined");
         }
         // eslint-disable-next-line no-undef
         CustomMediaRecorder = OpusMediaRecorder;
@@ -198,7 +178,7 @@ export default {
       // Check if a target format (e.g. audio/ogg) is supported.
       else if (!CustomMediaRecorder.isTypeSupported("audio/ogg;codecs=opus")) {
         if (!window.OpusMediaRecorder) {
-          console.error('OpusMediaRecorder is not defined');
+          console.error("OpusMediaRecorder is not defined");
         }
         // eslint-disable-next-line no-undef
         CustomMediaRecorder = OpusMediaRecorder;
@@ -209,13 +189,13 @@ export default {
         OggOpusEncoderWasmPath:
           "https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OggOpusEncoder.wasm",
         WebMOpusEncoderWasmPath:
-          "https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/WebMOpusEncoder.wasm"
+          "https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/WebMOpusEncoder.wasm",
       };
       this.$_mediaRecorder = new CustomMediaRecorder(
         this.$_stream,
         {
           // mimeType: this.mimeType
-          mimeType: "" // browser dependent
+          mimeType: "", // browser dependent
         },
         workerOptions
       );
@@ -238,7 +218,7 @@ export default {
       // Collect the available data into chunks
       this.$_mediaRecorder.addEventListener(
         "dataavailable",
-        e => {
+        (e) => {
           if (e.data && e.data.size > 0) {
             this.chunks.push(e.data);
           }
@@ -252,7 +232,7 @@ export default {
         () => {
           this.$emit("stop");
           const blobData = new Blob(this.chunks, {
-            type: this.$_mediaRecorder.mimeType
+            type: this.$_mediaRecorder.mimeType,
           });
           if (blobData.size > 0) {
             this.$emit("result", blobData);
@@ -264,7 +244,7 @@ export default {
         },
         true
       );
-    }
+    },
   },
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="home_"></div>
     <div class="home_wrapper">
       <div class="home_wrapper_rectangle">
         <p>
@@ -42,6 +43,10 @@
   flex-direction: column;
 }
 
+.home_ {
+  margin: 20px;
+}
+
 .home_wrapper {
   display: flex;
   height: 40vh;
@@ -78,6 +83,6 @@ button {
 }
 
 .home_choix {
-  margin: 120px;
+  margin: 80px;
 }
 </style>
