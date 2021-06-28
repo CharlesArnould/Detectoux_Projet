@@ -5,9 +5,10 @@
         <audio controls id="audio"></audio>
       </div>
       <div class="replay_audio_button">
-        <a class="replay_audio_button_record" id="record">Record</a>
-        <a class="replay_audio_button_one_disabled" id="pause">Pause</a>
-        <a class="replay_audio_button_one_disabled" id="stop">Reset</a>
+        <button class="replay_audio_button_enregistrer" id="enregistrer">
+          Enregistrer
+        </button>
+        <button class="replay_audio_button_stop" id="arreter">Arrêter</button>
       </div>
     </div>
     <div class="replay_choix">
@@ -23,6 +24,33 @@
 </template>
 
 <script>
+// export default {
+//   name: "Replay",
+
+//   methods: {
+//     enregistrer.onclick = () => {
+//   navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+//     mediaRecorder = new MediaRecorder(stream);
+//     mediaRecorder.start();
+//     chuck = [];
+
+//     mediaRecorder.addEventListener("dataavailable", (e) => {
+//       blob = newBlob(e.data);
+//     });
+//     mediaRecorder.addEventListener("stop", (e) => {
+//       blob = newBlob(chuck);
+//       audio_url = URL.createObjectURL(blob);
+//       audio = new Audio(audio_url);
+//       audio.setAttribute("controls", 1);
+//       ok.appendChild(audio);
+//     });
+//   });
+// }
+//   arreter.onclick = () => {
+//   mediaRecorder.stop();
+// }
+// },
+// }
 </script>
 
 <style scoped>
@@ -55,21 +83,3 @@ button {
   width: 50vw;
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-    <div class="play_choix_button_2">
-      <router-link to="/Play">
-        <button>
-          <b>Réenregistrer ma toux</b>
-        </button>
-      </router-link>
-    </div>
-    
