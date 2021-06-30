@@ -88,6 +88,7 @@
   height: 80vh;
   width: 100vw;
   flex-direction: column;
+  /* margin: 20px; */
 }
 
 .test1_étape1 {
@@ -107,7 +108,7 @@
   align-items: center;
   height: 50vh;
   width: 90vw;
-  margin: 80px;
+  margin: 50px;
 }
 
 .test1_wrapper_rectangle {
@@ -116,7 +117,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px;
+  padding: 50px;
 }
 
 .test1_wrapper_rectangle_form {

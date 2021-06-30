@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 75vh;
   width: 100vw;
   flex-direction: column;
 }
@@ -51,12 +51,12 @@
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 15px;
 }
 
 .test_wrapper_analyse {
   width: 90vw;
-  height: 25vh;
+  height: 20vh;
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
