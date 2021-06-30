@@ -62,6 +62,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 30px;
 }
 
 p {
