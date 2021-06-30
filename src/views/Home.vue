@@ -44,7 +44,7 @@
 }
 
 .home_ {
-  margin: 20px;
+  margin: 10px;
 }
 
 .home_wrapper {

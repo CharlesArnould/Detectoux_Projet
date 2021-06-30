@@ -1,8 +1,7 @@
 <template>
   <header>
     <div class="logo">
-      <p>Logo Detectoux</p>
-      <!-- <img alt="Vue logo" src="../assets/pixlr-bg-result.png" /> -->
+      <img alt="Vue logo" src="../assets/logo_detectoux.png" />
     </div>
   </header>
 </template>
@@ -17,10 +16,24 @@ export default {
 <style scoped>
 header {
   background-color: #516079;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+}
+
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
 }
 </style>
