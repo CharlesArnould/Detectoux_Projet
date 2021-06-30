@@ -84,6 +84,9 @@ button {
   margin: 10px;
   height: 6vh;
   width: 50vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
 }
 
 .home_choix {
