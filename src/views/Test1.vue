@@ -231,6 +231,12 @@ button {
   color: #2e3244;
 }
 
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
+}
+
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
