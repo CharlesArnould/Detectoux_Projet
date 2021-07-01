@@ -1,23 +1,20 @@
 
 <template>
-    <div class="wrapper">
-      <!--
+  <div class="wrapper">
+    <!--
       <header>
         <h1>Web dictaphone</h1>
       </header>-->
 
-      <section class="main-controls">
-        <canvas class="visualizer" height="60px"></canvas>
-        <div id="buttons">
-          <button id="record" onclick="recordOnclick()">Record</button>
-        </div>
-      </section>
+    <section class="main-controls">
+      <canvas class="visualizer" height="60px"></canvas>
+      <div id="buttons">
+        <button id="record" onclick="recordOnclick()">Record</button>
+      </div>
+    </section>
 
-      <section id="sound_clips">
-
-
-      </section>
-      <div class="replay_choix">
+    <section id="sound_clips"></section>
+    <div class="replay_choix">
       <div class="replay_choix_button">
         <router-link to="/Test3_1">
           <button>
@@ -26,12 +23,13 @@
         </router-link>
       </div>
     </div>
-
-    </div>
+  </div>
 </template>
 
 
 <script>
+Vincent
+
 
 
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -97,12 +95,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
 }
 
@@ -112,7 +111,8 @@ body {
   flex-direction: column;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: 2rem;
   text-align: center;
   font-weight: normal;
@@ -150,16 +150,16 @@ button {
   padding: 0.5rem;
 }
 
-button:hover, button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
 }
 
 button:active {
-  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.5);
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
 }
-
 
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
@@ -169,7 +169,8 @@ button:active {
   overflow: auto;
 }
 
-section, article {
+section,
+article {
   display: block;
 }
 
@@ -212,9 +213,9 @@ label {
   border-radius: 10px;
 }
 
-input[type=checkbox] {
-   position: absolute;
-   top: -100px;
+input[type="checkbox"] {
+  position: absolute;
+  top: -100px;
 }
 
 aside {
@@ -239,7 +240,7 @@ aside a {
 }
 
 /* Toggled State of information box */
-input[type=checkbox]:checked ~ aside {
+input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
 }
 
@@ -259,5 +260,4 @@ input[type=checkbox]:checked ~ aside {
     margin: 0 auto;
   }
 }
-
 </style>
