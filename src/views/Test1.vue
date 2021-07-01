@@ -1,8 +1,5 @@
 <template>
   <div class="test1">
-    <div class="test1_étape1">
-      <p><b>Etape 1</b></p>
-    </div>
     <div class="test1_wrapper">
       <div class="test1_wrapper_rectangle">
         <div class="test1_wrapper_rectangle_form">
@@ -64,112 +61,110 @@
             </select>
           </div>
           <br />
-          <div class="wrapper">
+          <div class="test1_wrapper_rectangle_form_audio">
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
               <div id="buttons">
-                <button id="record" onclick="recordOnclick()">Record</button>
+                <button id="record" onclick="recordOnclick()">
+                  Enregistrer
+                </button>
               </div>
             </section>
-
-            <section id="sound_clips">
-
-
-            </section>
-            <div class="replay_choix">
-            <div class="replay_choix_button">
-              <router-link to="/Test3_1">
-                <button>
-                  <b>Accéder au diagnostic</b>
-                </button>
-              </router-link>
-            </div>
-          </div>
-          <br />
+            <section id="sound_clips"></section>
+            <br />
           </div>
         </div>
+      </div>
+    </div>
+    <div class="replay_choix">
+      <div class="replay_choix_button">
+        <router-link to="/Test3_1">
+          <button>
+            <b>Accéder au diagnostic</b>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-   console.log('getUserMedia supported.');
-   recordOnclick = function() {
-      navigator.mediaDevices.getUserMedia ({audio: true})
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  console.log("getUserMedia supported.");
+  recordOnclick = function () {
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
       // Success callback
-      .then(stream => {
+      .then((stream) => {
         mediaRecorder = new MediaRecorder(stream);
         mediaRecorder.start();
         console.log(mediaRecorder.state);
         console.log("recorder started");
-        record.style.background = "red";
-        record.style.color = "black";
-        chuck=[]
+        // record.style.background = "red";
+        // record.style.color = "black";
+        chuck = [];
 
-        mediaRecorder.addEventListener("dataavailable", e =>{
-          chuck.push(e.data)
-        })
+        mediaRecorder.addEventListener("dataavailable", (e) => {
+          chuck.push(e.data);
+        });
 
-        mediaRecorder.addEventListener("stop", e=>{
+        mediaRecorder.addEventListener("stop", (e) => {
           console.log("recorder stopped");
-          const clipContainer = document.createElement('article');
-          const clipLabel = document.createElement('p');
-          const deleteButton = document.createElement('button');
+          const clipContainer = document.createElement("article");
+          const clipLabel = document.createElement("p");
+          const deleteButton = document.createElement("button");
 
-          clipContainer.classList.add('clip');
-          blob=new Blob(chuck,{ 'type' : 'audio/ogg; codecs=opus' })
-          audio_url=URL.createObjectURL(blob)
-          audio=new Audio(audio_url)
+          clipContainer.classList.add("clip");
+          blob = new Blob(chuck, { type: "audio/ogg; codecs=opus" });
+          audio_url = URL.createObjectURL(blob);
+          audio = new Audio(audio_url);
 
-          audio.setAttribute("controls",1)
+          audio.setAttribute("controls", 1);
           deleteButton.innerHTML = "Delete";
-          clipLabel.innerHTML = 'Votre toux';
+          // clipLabel.innerHTML = "Votre toux";
 
           clipContainer.appendChild(audio);
           clipContainer.appendChild(clipLabel);
           clipContainer.appendChild(deleteButton);
           sound_clips.appendChild(clipContainer);
 
-          deleteButton.onclick = function(e) {
+          deleteButton.onclick = function (e) {
             let evtTgt = e.target;
             evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-          }
-        })
-        setTimeout(() => { mediaRecorder.stop();}, 3000);
+          };
+        });
+        setTimeout(() => {
+          mediaRecorder.stop();
+        }, 3000);
       })
       // Error callback
-      .catch(function(err) {
-         console.log('The following getUserMedia error occurred: ' + err);
+      .catch(function (err) {
+        console.log("The following getUserMedia error occurred: " + err);
       });
-    }
-  } else {
-    console.log('getUserMedia not supported on your browser!');
-  }
+  };
+} else {
+  console.log("getUserMedia not supported on your browser!");
+}
 </script>
 
 <style scoped>
-.test1 {
+body {
+  overflow: auto;
+}
+
+#record .test1 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
   width: 100vw;
   flex-direction: column;
-  /* margin: 20px; */
+  margin: 0;
 }
 
-.test1_étape1 {
-  width: 25vw;
-  height: 7vh;
-  background: #f1895c;
-  box-shadow: 6px 8px 8px #2e3244;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
+/* #record:active {
+  background-color: red;
+} */
 
 .test1_wrapper {
   display: flex;
@@ -177,7 +172,7 @@
   align-items: center;
   height: 50vh;
   width: 90vw;
-  margin: 50px;
+  margin: 30px;
 }
 
 .test1_wrapper_rectangle {
@@ -186,7 +181,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 40px;
 }
 
 .test1_wrapper_rectangle_form {
@@ -249,22 +244,23 @@ p {
   justify-content: center;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
 }
 
-.wrapper {
-  height: 100%;
+/* .wrapper {
   display: flex;
   flex-direction: column;
-}
+} */
 
-h1, h2 {
+h1,
+h2 {
   font-size: 2rem;
   text-align: center;
   font-weight: normal;
@@ -280,17 +276,17 @@ canvas {
   margin-bottom: 0.5rem;
 }
 
-#buttons {
+/* #buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
+} */
 
-#buttons button {
+/* #buttons button {
   font-size: 1rem;
   padding: 1rem;
   width: calc(50% - 0.25rem);
-}
+} */
 /*
 button {
   font-size: 1rem;
@@ -302,16 +298,16 @@ button {
   padding: 0.5rem;
 }
 */
-button:hover, button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
 }
 
-button:active {
-  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.5);
+/* button:active {
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
-}
-
+} */
 
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
@@ -353,20 +349,9 @@ button.delete {
 
 /* Checkbox hack to control information box display */
 
-label {
-  font-size: 3rem;
+input[type="checkbox"] {
   position: absolute;
-  top: 2px;
-  right: 3px;
-  z-index: 5;
-  cursor: pointer;
-  background-color: black;
-  border-radius: 10px;
-}
-
-input[type=checkbox] {
-   position: absolute;
-   top: -100px;
+  top: -100px;
 }
 
 aside {
@@ -391,7 +376,7 @@ aside a {
 }
 */
 /* Toggled State of information box */
-input[type=checkbox]:checked ~ aside {
+input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
 }
 
@@ -405,7 +390,7 @@ input[type=checkbox]:checked ~ aside {
 @media all and (min-width: 800px) {
   /* Don't take all the space as readability is lost when line length
      goes past a certain size */
-  .wrapper {
+  .test1_wrapper_rectangle_form_audio {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
