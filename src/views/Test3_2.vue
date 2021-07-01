@@ -7,13 +7,9 @@
       <div class="test_wrapper_analyse">
         <div class="test_wrapper_analyse_texte">
           <p>
-            Après analyse de votre toux, nous avons détécté une possible
-            présence de la Covid-19 à hauteur de :
+            Après analyse de votre toux, vous
+            êtes<strong>&nbsp;positif&nbsp;</strong>au Covid-19.
           </p>
-        </div>
-        <div class="test_wrapper_analyse_pourcentage">
-          <!-- Afficher le pourcentage -->
-          <p><b>87%</b></p>
         </div>
       </div>
     </div>
@@ -42,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 75vh;
   width: 100vw;
   flex-direction: column;
 }
@@ -55,26 +51,23 @@
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 15px;
 }
 
 .test_wrapper_analyse {
   width: 90vw;
-  height: 30vh;
+  height: 20vh;
   background: #c4c4c4;
   box-shadow: 6px 8px 8px #2e3244;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  margin: 30px;
+  margin: 10px;
 }
 
 .test_wrapper_analyse_texte {
-  margin: 20px;
-}
-
-.test_wrapper_analyse_pourcentage {
-  font-weight: bold;
-  margin: 15px;
+  padding: 0px;
 }
 
 .test_message {

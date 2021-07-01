@@ -15,7 +15,7 @@
       <div class="replay_choix_button">
         <router-link to="/Test3_1">
           <button>
-            <b>Accéder au diagnostique</b>
+            <b>Accéder au diagnostic</b>
           </button>
         </router-link>
       </div>
@@ -24,33 +24,6 @@
 </template>
 
 <script>
-// export default {
-//   name: "Replay",
-
-//   methods: {
-//     enregistrer.onclick = () => {
-//   navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-//     mediaRecorder = new MediaRecorder(stream);
-//     mediaRecorder.start();
-//     chuck = [];
-
-//     mediaRecorder.addEventListener("dataavailable", (e) => {
-//       blob = newBlob(e.data);
-//     });
-//     mediaRecorder.addEventListener("stop", (e) => {
-//       blob = newBlob(chuck);
-//       audio_url = URL.createObjectURL(blob);
-//       audio = new Audio(audio_url);
-//       audio.setAttribute("controls", 1);
-//       ok.appendChild(audio);
-//     });
-//   });
-// }
-//   arreter.onclick = () => {
-//   mediaRecorder.stop();
-// }
-// },
-// }
 </script>
 
 <style scoped>
@@ -81,5 +54,8 @@ button {
   margin: 10px;
   height: 6vh;
   width: 50vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
 }
 </style>

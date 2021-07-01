@@ -7,9 +7,9 @@
           Bienvenue sur<b> Detectoux</b> ! <br /><br />
           En quelques étapes, obtenez un diagnostic rapide sur la présence de
           la<b> Covid-19</b>.<br /><br />
-          Si vous possédez un test Covid-19, qu’il soit positif ou négatif, vous
+          <!-- Si vous possédez un test Covid-19, qu’il soit positif ou négatif, vous
           pouvez nous aider à améliorer le diagnostic en contribuant à notre
-          base de données.
+          base de données. -->
         </p>
       </div>
     </div>
@@ -21,11 +21,11 @@
           </button>
         </router-link>
       </div>
-      <div class="home_choix_button">
+      <!-- <div class="home_choix_button">
         <router-link to="/Contribue0">
           <button><b>Je contribue</b></button>
         </router-link>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -44,11 +44,13 @@
 }
 
 .home_ {
-  margin: 20px;
+  margin: 10px;
 }
 
 .home_wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40vh;
   width: 90vw;
 }
@@ -60,6 +62,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 30px;
+  width: 90vw;
 }
 
 p {
@@ -80,9 +84,12 @@ button {
   margin: 10px;
   height: 6vh;
   width: 50vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
 }
 
 .home_choix {
-  margin: 80px;
+  margin: 70px;
 }
 </style>
