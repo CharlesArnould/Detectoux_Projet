@@ -1,10 +1,10 @@
 
 <template>
     <div class="wrapper">
-
+      <!--
       <header>
         <h1>Web dictaphone</h1>
-      </header>
+      </header>-->
 
       <section class="main-controls">
         <canvas class="visualizer" height="60px"></canvas>
@@ -17,6 +17,15 @@
 
 
       </section>
+      <div class="replay_choix">
+      <div class="replay_choix_button">
+        <router-link to="/Test3_1">
+          <button>
+            <b>Accéder au diagnostic</b>
+          </button>
+        </router-link>
+      </div>
+    </div>
 
     </div>
 </template>
@@ -24,7 +33,7 @@
 
 <script>
 
-
+/*
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
    console.log('getUserMedia supported.');
    recordOnclick = function() {
@@ -77,7 +86,7 @@
     }
   } else {
     console.log('getUserMedia not supported on your browser!');
-  }
+  }*/
 </script>
 
 
