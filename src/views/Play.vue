@@ -86,7 +86,7 @@
     }
   } else {
     console.log('getUserMedia not supported on your browser!');
-  }*/
+  }
 </script>
 
 
