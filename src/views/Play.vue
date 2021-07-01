@@ -28,7 +28,10 @@
 
 
 <script>
-/*
+Vincent
+
+
+
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
    console.log('getUserMedia supported.');
    recordOnclick = function() {
@@ -81,7 +84,7 @@
     }
   } else {
     console.log('getUserMedia not supported on your browser!');
-  }*/
+  }
 </script>
 
 
