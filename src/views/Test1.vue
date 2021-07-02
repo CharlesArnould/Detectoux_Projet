@@ -1,8 +1,5 @@
 <template>
   <div class="test1">
-    <div class="test1_étape1">
-      <p><b>Etape 1</b></p>
-    </div>
     <div class="test1_wrapper">
       <div class="test1_wrapper_rectangle">
         <div class="test1_wrapper_rectangle_form">
@@ -67,7 +64,7 @@
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" onclick="recordOnclick()">Enregistrer</button>
+              <button id="record" @click="record()">Enregistrer</button>
             </section>
 
             <section id="sound_clips"></section>
