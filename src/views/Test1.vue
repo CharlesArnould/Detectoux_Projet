@@ -60,15 +60,11 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
-          <br />
           <div class="test1_wrapper_rectangle_form_audio">
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
-              <div id="buttons">
-                <button id="record" onclick="recordOnclick()">
-                  Enregistrer
-                </button>
-              </div>
+
+              <button id="record" onclick="recordOnclick()">Enregistrer</button>
             </section>
             <section id="sound_clips"></section>
             <br />
@@ -224,6 +220,7 @@ button {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: #2e3244;
+  /* box-shadow: 6px 8px 8px #2e3244; */
 }
 
 button:hover,
@@ -275,18 +272,6 @@ canvas {
   display: block;
   margin-bottom: 0.5rem;
 }
-
-/* #buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
-
-/* #buttons button {
-  font-size: 1rem;
-  padding: 1rem;
-  width: calc(50% - 0.25rem);
-} */
 /*
 button {
   font-size: 1rem;
