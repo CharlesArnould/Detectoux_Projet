@@ -1,8 +1,5 @@
 <template>
   <div class="test1">
-    <div class="test1_étape1">
-      <p><b>Etape 1</b></p>
-    </div>
     <div class="test1_wrapper">
       <div class="test1_wrapper_rectangle">
         <div class="test1_wrapper_rectangle_form">
@@ -255,6 +252,7 @@
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     color: #2e3244;
+    /* box-shadow: 6px 8px 8px #2e3244; */
   }
 
   button:hover,
@@ -281,10 +279,9 @@
   }
 
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.8rem;
   }
-
   .wrapper {
     height: 100%;
     display: flex;
@@ -303,38 +300,21 @@
     padding: 0.5rem 0;
   }
 
-  canvas {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  #buttons button {
-    font-size: 1rem;
-    padding: 1rem;
-    width: calc(50% - 0.25rem);
-  }
-
   /*
-button {
-  font-size: 1rem;
-  background: #0088cc;
-  text-align: center;
-  color: white;
-  border: none;
-  transition: all 0.2s;
-  padding: 0.5rem;
-}
-*/
+  button {
+    font-size: 1rem;
+    background: #0088cc;
+    text-align: center;
+    color: white;
+    border: none;
+    transition: all 0.2s;
+    padding: 0.5rem;
+  }
+  */
   button:hover,
   button:focus {
-    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-    background: #0ae;
+    height: 6vh;
+    width: 51vw;
   }
 
   button:active {
@@ -342,19 +322,18 @@ button {
     transform: translateY(2px);
   }
 
-
   /* Make the clips use as much space as possible, and
- * also show a scrollbar when there are too many clips to show
- * in the available space */
+  * also show a scrollbar when there are too many clips to show
+  * in the available space */
   .sound-clips {
     flex: 1;
     overflow: auto;
   }
 
   /*
-section, article {
-  display: block;
-}*/
+  section, article {
+    display: block;
+  }*/
 
   .clip {
     padding-bottom: 1rem;
@@ -382,20 +361,7 @@ section, article {
     font-size: 0.8rem;
   }
 
-  /* Checkbox hack to control information box display */
-
-  label {
-    font-size: 3rem;
-    position: absolute;
-    top: 2px;
-    right: 3px;
-    z-index: 5;
-    cursor: pointer;
-    background-color: black;
-    border-radius: 10px;
-  }
-
-  input[type=checkbox] {
+  input[type="checkbox"] {
     position: absolute;
     top: -100px;
   }
@@ -413,17 +379,17 @@ section, article {
   }
 
   /*
-aside p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
+  aside p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
 
-aside a {
-  color: #666;
-}
-*/
+  aside a {
+    color: #666;
+  }
+  */
   /* Toggled State of information box */
-  input[type=checkbox]:checked~aside {
+  input[type="checkbox"]:checked ~ aside {
     transform: translateX(0);
   }
 
@@ -435,9 +401,8 @@ aside a {
 
   /* Adjustments for wider screens */
   @media all and (min-width: 800px) {
-
     /* Don't take all the space as readability is lost when line length
-     goes past a certain size */
+      goes past a certain size */
     .wrapper {
       width: 90%;
       max-width: 1000px;

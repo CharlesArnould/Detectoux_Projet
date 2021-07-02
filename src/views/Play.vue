@@ -28,6 +28,7 @@
 
 
 <script>
+/*
 Vincent
 
 
@@ -84,7 +85,7 @@ Vincent
     }
   } else {
     console.log('getUserMedia not supported on your browser!');
-  }
+  }*/
 </script>
 
 
