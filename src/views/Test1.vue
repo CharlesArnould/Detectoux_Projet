@@ -297,23 +297,6 @@ h2 {
   padding: 0.5rem 0;
 }
 
-/*
-button {
-  font-size: 1rem;
-  background: #0088cc;
-  text-align: center;
-  color: white;
-  border: none;
-  transition: all 0.2s;
-  padding: 0.5rem;
-}
-*/
-button:hover,
-button:focus {
-  height: 6vh;
-  width: 51vw;
-}
-
 button:active {
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
@@ -375,23 +358,12 @@ aside {
   padding: 1rem;
 }
 
-/*
-aside p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-aside a {
-  color: #666;
-}
-*/
 /* Toggled State of information box */
 input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
 }
 
 /* Cursor when clip name is clicked over */
-
 .clip p {
   cursor: pointer;
 }
