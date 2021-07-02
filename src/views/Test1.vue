@@ -64,7 +64,7 @@
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" onclick="recordOnclick()">Enregistrer</button>
+              <button id="record" @click="record()">Enregistrer</button>
             </section>
 
             <section id="sound_clips"></section>
