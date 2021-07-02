@@ -44,7 +44,7 @@
                 Essoufflement, mal de gorge, maux de corps
               </option>
               <option value="ess_toux">
-                Essoufflement, Toux nouvelle ou aggravée
+                Essoufflement, toux nouvelle ou aggravée
               </option>
               <option value="mdg_pdg_pdo">
                 Mal de gorge, perte du goût, perte de l'odorat
@@ -205,7 +205,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 40px;
 }
 
 .test1_wrapper_rectangle_form {
@@ -234,6 +234,13 @@ export default {
 }
 
 .test1_wrapper_rectangle_form_sympt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.test1_wrapper_rectangle_form_audio {
   display: flex;
   justify-content: center;
   align-items: center;
