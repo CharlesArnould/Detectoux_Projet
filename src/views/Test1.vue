@@ -1,5 +1,8 @@
 <template>
   <div class="test1">
+    <div class="test1_étape1">
+      <p><b>Etape 1</b></p>
+    </div>
     <div class="test1_wrapper">
       <div class="test1_wrapper_rectangle">
         <div class="test1_wrapper_rectangle_form">
@@ -11,7 +14,7 @@
           </div>
           <div class="test1_wrapper_rectangle_form_fum">
             <label for="fum">Fumeur :&nbsp;</label>
-            <select id="fum" required>
+            <select id="fum" v-model="smoker" required>
               <option value="">- Choix -</option>
               <option value="oui">Oui</option>
               <option value="non">Non</option>
@@ -19,8 +22,8 @@
           </div>
           <br />
           <div class="test1_wrapper_rectangle_form_ant">
-            <label for="sexe">Antécedents médicaux :&nbsp;</label>
-            <select id="sexe" required>
+            <label for="med">Antécedents médicaux :&nbsp;</label>
+            <select id="med" v-model="medhist" required>
               <option value="">- Choix -</option>
               <option value="diabete">Diabète avec complications</option>
               <option value="asthme">
@@ -34,8 +37,8 @@
           </div>
           <br />
           <div class="test1_wrapper_rectangle_form_sympt">
-            <label for="sexe">Symptômes :&nbsp;</label>
-            <select id="sexe" required>
+            <label for="symp">Symptômes :&nbsp;</label>
+            <select id="symp" v-model="symp" required>
               <option value="">- Choix -</option>
               <option value="toux">Toux nouvelle ou aggravée</option>
               <option value="mdg">Mal de gorge</option>
@@ -66,101 +69,129 @@
 
               <button id="record" onclick="recordOnclick()">Enregistrer</button>
             </section>
+
             <section id="sound_clips"></section>
+            <div class="replay_choix">
+              <div class="replay_choix_button">
+                <router-link to="/Test3_1">
+                  <button>
+                    <b>Accéder au diagnostic</b>
+                  </button>
+                </router-link>
+              </div>
+            </div>
             <br />
           </div>
         </div>
-      </div>
-    </div>
-    <div class="replay_choix">
-      <div class="replay_choix_button">
-        <router-link to="/Test3_1">
-          <button>
-            <b>Accéder au diagnostic</b>
-          </button>
-        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  console.log("getUserMedia supported.");
-  recordOnclick = function () {
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      // Success callback
-      .then((stream) => {
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.start();
-        console.log(mediaRecorder.state);
-        console.log("recorder started");
-        // record.style.background = "red";
-        // record.style.color = "black";
-        chuck = [];
+export default {
+  name: "Test1",
+  components: {},
+  data() {
+    return {
+      smoker: null,
+      medhist: null,
+      symp: null,
+      blob: null,
+    };
+  },
+  mounted() {
+    console.log(navigator);
+  },
+  methods: {
+    record() {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({
+            audio: true,
+          })
+          // Success callback
+          .then((stream) => {
+            let mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            console.log(mediaRecorder.state);
+            console.log("recorder started");
+            record.style.background = "red";
+            record.style.color = "black";
+            let chuck = [];
 
-        mediaRecorder.addEventListener("dataavailable", (e) => {
-          chuck.push(e.data);
-        });
+            mediaRecorder.addEventListener("dataavailable", (e) => {
+              chuck.push(e.data);
+            });
 
-        mediaRecorder.addEventListener("stop", (e) => {
-          console.log("recorder stopped");
-          const clipContainer = document.createElement("article");
-          const clipLabel = document.createElement("p");
-          const deleteButton = document.createElement("button");
+            mediaRecorder.addEventListener("stop", (e) => {
+              console.log("recorder stopped");
+              const clipContainer = document.createElement("article");
+              const clipLabel = document.createElement("p");
+              const deleteButton = document.createElement("button");
 
-          clipContainer.classList.add("clip");
-          blob = new Blob(chuck, { type: "audio/ogg; codecs=opus" });
-          audio_url = URL.createObjectURL(blob);
-          audio = new Audio(audio_url);
+              clipContainer.classList.add("clip");
+              this.blob = new Blob(chuck, {
+                type: "audio/mp3;",
+              });
+              console.log(this.blob.type);
+              let audio_url = URL.createObjectURL(this.blob);
+              let audio = new Audio(audio_url);
 
-          audio.setAttribute("controls", 1);
-          deleteButton.innerHTML = "Delete";
-          // clipLabel.innerHTML = "Votre toux";
+              audio.setAttribute("controls", 1);
+              deleteButton.innerHTML = "Delete";
+              clipLabel.innerHTML = "Votre toux";
 
-          clipContainer.appendChild(audio);
-          clipContainer.appendChild(clipLabel);
-          clipContainer.appendChild(deleteButton);
-          sound_clips.appendChild(clipContainer);
-
-          deleteButton.onclick = function (e) {
-            let evtTgt = e.target;
-            evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-          };
-        });
-        setTimeout(() => {
-          mediaRecorder.stop();
-        }, 3000);
-      })
-      // Error callback
-      .catch(function (err) {
-        console.log("The following getUserMedia error occurred: " + err);
-      });
-  };
-} else {
-  console.log("getUserMedia not supported on your browser!");
-}
+              clipContainer.appendChild(audio);
+              clipContainer.appendChild(clipLabel);
+              clipContainer.appendChild(deleteButton);
+              sound_clips.appendChild(clipContainer);
+              console.log(this.donnee);
+              deleteButton.onclick = function (e) {
+                let evtTgt = e.target;
+                evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+              };
+            });
+            setTimeout(() => {
+              mediaRecorder.stop();
+            }, 2000);
+          })
+          // Error callback
+          .catch(function (err) {
+            console.log("The following getUserMedia error occurred: " + err);
+          });
+      }
+    },
+  },
+  computed: {
+    donnee: function () {
+      return [this.smoker, this.medhist, this.symp, this.blob];
+    },
+  },
+};
 </script>
 
 <style scoped>
-body {
-  overflow: auto;
-}
-
-#record .test1 {
+.test1 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
   width: 100vw;
   flex-direction: column;
-  margin: 0;
+  /* margin: 20px; */
 }
 
-/* #record:active {
-  background-color: red;
-} */
+.test1_étape1 {
+  width: 25vw;
+  height: 7vh;
+  background: #f1895c;
+  box-shadow: 6px 8px 8px #2e3244;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
 
 .test1_wrapper {
   display: flex;
@@ -168,7 +199,7 @@ body {
   align-items: center;
   height: 50vh;
   width: 90vw;
-  margin: 30px;
+  margin: 50px;
 }
 
 .test1_wrapper_rectangle {
@@ -177,7 +208,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 50px;
 }
 
 .test1_wrapper_rectangle_form {
@@ -251,10 +282,11 @@ body {
   font-size: 0.8rem;
 }
 
-/* .wrapper {
+.wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
-} */
+}
 
 h1,
 h2 {
@@ -268,10 +300,6 @@ h2 {
   padding: 0.5rem 0;
 }
 
-canvas {
-  display: block;
-  margin-bottom: 0.5rem;
-}
 /*
 button {
   font-size: 1rem;
@@ -285,14 +313,14 @@ button {
 */
 button:hover,
 button:focus {
-  height: 6vh;
-  width: 51vw;
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
+  background: #0ae;
 }
 
-/* button:active {
+button:active {
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
-} */
+}
 
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
@@ -301,6 +329,7 @@ button:focus {
   flex: 1;
   overflow: auto;
 }
+
 /*
 section, article {
   display: block;
@@ -334,6 +363,17 @@ button.delete {
 
 /* Checkbox hack to control information box display */
 
+label {
+  font-size: 3rem;
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  z-index: 5;
+  cursor: pointer;
+  background-color: black;
+  border-radius: 10px;
+}
+
 input[type="checkbox"] {
   position: absolute;
   top: -100px;
@@ -350,6 +390,7 @@ aside {
   background-color: #efefef;
   padding: 1rem;
 }
+
 /*
 aside p {
   font-size: 1.2rem;
@@ -375,7 +416,7 @@ input[type="checkbox"]:checked ~ aside {
 @media all and (min-width: 800px) {
   /* Don't take all the space as readability is lost when line length
      goes past a certain size */
-  .test1_wrapper_rectangle_form_audio {
+  .wrapper {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;

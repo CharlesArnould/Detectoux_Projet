@@ -29,6 +29,9 @@
 
 <script>
 /*
+
+
+
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
    console.log('getUserMedia supported.');
    recordOnclick = function() {
