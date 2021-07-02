@@ -64,7 +64,7 @@
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" @click="record()">Enregistrer</button>
+              <button id="record" @click="record()"><b>Enregistrer</b></button>
             </section>
 
             <section id="sound_clips"></section>
@@ -137,7 +137,6 @@ export default {
 
               audio.setAttribute("controls", 1);
               deleteButton.innerHTML = "Delete";
-              clipLabel.innerHTML = "Votre toux";
 
               clipContainer.appendChild(audio);
               clipContainer.appendChild(clipLabel);
@@ -230,7 +229,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .test1_wrapper_rectangle_form_sympt {
@@ -281,17 +280,6 @@ body {
   height: 100%;
 }
 
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.8rem;
-}
-
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 h1,
 h2 {
   font-size: 2rem;
@@ -301,12 +289,7 @@ h2 {
 }
 
 .main-controls {
-  padding: 0.5rem 0;
-}
-
-button:active {
-  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-  transform: translateY(2px);
+  padding: 4px;
 }
 
 /* Make the clips use as much space as possible, and
@@ -317,11 +300,6 @@ button:active {
   overflow: auto;
 }
 
-/*
-section, article {
-  display: block;
-}*/
-
 .clip {
   padding-bottom: 1rem;
 }
@@ -330,11 +308,6 @@ audio {
   width: 100%;
   display: block;
   margin: 1rem auto 0.5rem;
-}
-
-.clip p {
-  display: inline-block;
-  font-size: 1rem;
 }
 
 .clip button {
