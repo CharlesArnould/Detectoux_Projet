@@ -26,6 +26,7 @@
 </template>
 
 <script>
+/*
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   console.log("getUserMedia supported.");
   recordOnclick = function () {
@@ -81,7 +82,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   };
 } else {
   console.log("getUserMedia not supported on your browser!");
-}
+}*/
 </script>
 
 <style scoped>
@@ -109,6 +110,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   padding: 50px;
 }
 
+/* .replay_audio_record{
+
+} */
+
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -130,10 +135,6 @@ button {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: #2e3244;
-}
-
-button:active {
-  box-shadow: inset 0px 0px 20px rgba(248, 102, 17, 0.5);
 }
 
 button:hover,
@@ -176,7 +177,7 @@ audio {
 }
 
 button.delete {
-  background: #f00;
+  background: #4d8ae8;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
 }
@@ -229,5 +230,16 @@ input[type="checkbox"]:checked ~ aside {
 
 .clip p {
   cursor: pointer;
+}
+
+/* Adjustments for wider screens */
+@media all and (min-width: 800px) {
+  /* Don't take all the space as readability is lost when line length
+     goes past a certain size */
+  .wrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 }
 </style>

@@ -1,8 +1,6 @@
+
 <template>
   <div class="test1">
-    <div class="test1_étape1">
-      <p><b>Etape 1</b></p>
-    </div>
     <div class="test1_wrapper">
       <div class="test1_wrapper_rectangle">
         <div class="test1_wrapper_rectangle_form">
@@ -14,7 +12,7 @@
           </div>
           <div class="test1_wrapper_rectangle_form_fum">
             <label for="fum">Fumeur :&nbsp;</label>
-            <select id="fum" required>
+            <select id="fum" v-model="smoker" required>
               <option value="">- Choix -</option>
               <option value="oui">Oui</option>
               <option value="non">Non</option>
@@ -22,8 +20,8 @@
           </div>
           <br />
           <div class="test1_wrapper_rectangle_form_ant">
-            <label for="sexe">Antécedents médicaux :&nbsp;</label>
-            <select id="sexe" required>
+            <label for="med">Antécedents médicaux :&nbsp;</label>
+            <select id="med" v-model="medhist" required>
               <option value="">- Choix -</option>
               <option value="diabete">Diabète avec complications</option>
               <option value="asthme">
@@ -37,8 +35,8 @@
           </div>
           <br />
           <div class="test1_wrapper_rectangle_form_sympt">
-            <label for="sexe">Symptômes :&nbsp;</label>
-            <select id="sexe" required>
+            <label for="symp">Symptômes :&nbsp;</label>
+            <select id="symp" v-model="symp" required>
               <option value="">- Choix -</option>
               <option value="toux">Toux nouvelle ou aggravée</option>
               <option value="mdg">Mal de gorge</option>
@@ -47,7 +45,7 @@
                 Essoufflement, mal de gorge, maux de corps
               </option>
               <option value="ess_toux">
-                Essoufflement, Toux nouvelle ou aggravée
+                Essoufflement, toux nouvelle ou aggravée
               </option>
               <option value="mdg_pdg_pdo">
                 Mal de gorge, perte du goût, perte de l'odorat
@@ -63,13 +61,11 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
-          <br />
-          <div class="wrapper">
+          <div class="test1_wrapper_rectangle_form_audio">
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
-              <div id="buttons">
-                <button id="record" onclick="recordOnclick()">Record</button>
-              </div>
+
+              <button id="record" @click="record()">Enregistrer</button>
             </section>
 
             <section id="sound_clips"></section>
@@ -91,56 +87,81 @@
 </template>
 
 <script>
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  console.log("getUserMedia supported.");
-  recordOnclick = function () {
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      // Success callback
-      .then((stream) => {
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.start();
-        console.log(mediaRecorder.state);
-        console.log("recorder started");
-        record.style.background = "red";
-        record.style.color = "black";
-        chuck = [];
-        mediaRecorder.addEventListener("dataavailable", (e) => {
-          chuck.push(e.data);
-        });
-        mediaRecorder.addEventListener("stop", (e) => {
-          console.log("recorder stopped");
-          const clipContainer = document.createElement("article");
-          const clipLabel = document.createElement("p");
-          const deleteButton = document.createElement("button");
-          clipContainer.classList.add("clip");
-          blob = new Blob(chuck, { type: "audio/ogg; codecs=opus" });
-          audio_url = URL.createObjectURL(blob);
-          audio = new Audio(audio_url);
-          audio.setAttribute("controls", 1);
-          deleteButton.innerHTML = "Delete";
-          clipLabel.innerHTML = "Votre toux";
-          clipContainer.appendChild(audio);
-          clipContainer.appendChild(clipLabel);
-          clipContainer.appendChild(deleteButton);
-          sound_clips.appendChild(clipContainer);
-          deleteButton.onclick = function (e) {
-            let evtTgt = e.target;
-            evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-          };
-        });
-        setTimeout(() => {
-          mediaRecorder.stop();
-        }, 3000);
-      })
-      // Error callback
-      .catch(function (err) {
-        console.log("The following getUserMedia error occurred: " + err);
-      });
-  };
-} else {
-  console.log("getUserMedia not supported on your browser!");
-}
+export default {
+  name: "Test1",
+  components: {},
+  data() {
+    return {
+      smoker: null,
+      medhist: null,
+      symp: null,
+      blob: null,
+    };
+  },
+  mounted() {
+    console.log(navigator);
+  },
+  methods: {
+    record() {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({
+            audio: true,
+          })
+          // Success callback
+          .then((stream) => {
+            let mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            console.log(mediaRecorder.state);
+            console.log("recorder started");
+            record.style.background = "red";
+            record.style.color = "black";
+            let chuck = [];
+            mediaRecorder.addEventListener("dataavailable", (e) => {
+              chuck.push(e.data);
+            });
+            mediaRecorder.addEventListener("stop", (e) => {
+              console.log("recorder stopped");
+              const clipContainer = document.createElement("article");
+              const clipLabel = document.createElement("p");
+              const deleteButton = document.createElement("button");
+              clipContainer.classList.add("clip");
+              this.blob = new Blob(chuck, {
+                type: "audio/mp3;",
+              });
+              console.log(this.blob.type);
+              let audio_url = URL.createObjectURL(this.blob);
+              let audio = new Audio(audio_url);
+              audio.setAttribute("controls", 1);
+              deleteButton.innerHTML = "Delete";
+              clipLabel.innerHTML = "Votre toux";
+              clipContainer.appendChild(audio);
+              clipContainer.appendChild(clipLabel);
+              clipContainer.appendChild(deleteButton);
+              sound_clips.appendChild(clipContainer);
+              console.log(this.donnee);
+              deleteButton.onclick = function (e) {
+                let evtTgt = e.target;
+                evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+              };
+            });
+            setTimeout(() => {
+              mediaRecorder.stop();
+            }, 2000);
+          })
+          // Error callback
+          .catch(function (err) {
+            console.log("The following getUserMedia error occurred: " + err);
+          });
+      }
+    },
+  },
+  computed: {
+    donnee: function () {
+      return [this.smoker, this.medhist, this.symp, this.blob];
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -177,7 +198,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 40px;
 }
 .test1_wrapper_rectangle_form {
   display: flex;
@@ -206,6 +227,12 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   align-items: center;
   flex-direction: column;
 }
+.test1_wrapper_rectangle_form_audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 button {
   background: #f1895c;
   margin: 5px;
@@ -214,6 +241,7 @@ button {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: #2e3244;
+  /* box-shadow: 6px 8px 8px #2e3244; */
 }
 button:hover,
 button:focus {
@@ -254,36 +282,6 @@ h2 {
 .main-controls {
   padding: 0.5rem 0;
 }
-canvas {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-#buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#buttons button {
-  font-size: 1rem;
-  padding: 1rem;
-  width: calc(50% - 0.25rem);
-}
-/*
-button {
-  font-size: 1rem;
-  background: #0088cc;
-  text-align: center;
-  color: white;
-  border: none;
-  transition: all 0.2s;
-  padding: 0.5rem;
-}
-*/
-button:hover,
-button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
-}
 button:active {
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
@@ -320,17 +318,6 @@ button.delete {
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
 }
-/* Checkbox hack to control information box display */
-label {
-  font-size: 3rem;
-  position: absolute;
-  top: 2px;
-  right: 3px;
-  z-index: 5;
-  cursor: pointer;
-  background-color: black;
-  border-radius: 10px;
-}
 input[type="checkbox"] {
   position: absolute;
   top: -100px;
@@ -346,15 +333,6 @@ aside {
   background-color: #efefef;
   padding: 1rem;
 }
-/*
-aside p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-aside a {
-  color: #666;
-}
-*/
 /* Toggled State of information box */
 input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
