@@ -313,8 +313,8 @@ button {
 */
 button:hover,
 button:focus {
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-  background: #0ae;
+  height: 6vh;
+  width: 51vw;
 }
 
 button:active {
@@ -359,19 +359,6 @@ button.delete {
   background: #f00;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
-}
-
-/* Checkbox hack to control information box display */
-
-label {
-  font-size: 3rem;
-  position: absolute;
-  top: 2px;
-  right: 3px;
-  z-index: 5;
-  cursor: pointer;
-  background-color: black;
-  border-radius: 10px;
 }
 
 input[type="checkbox"] {
