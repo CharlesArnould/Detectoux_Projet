@@ -124,7 +124,6 @@ export default {
             mediaRecorder.addEventListener("stop", (e) => {
               console.log("recorder stopped");
               const clipContainer = document.createElement("article");
-              const clipLabel = document.createElement("p");
               const deleteButton = document.createElement("button");
 
               clipContainer.classList.add("clip");
@@ -136,11 +135,9 @@ export default {
               let audio = new Audio(audio_url);
 
               audio.setAttribute("controls", 1);
-              deleteButton.innerHTML = "Delete";
-              clipLabel.innerHTML = "Votre toux";
+              deleteButton.innerHTML = "Supprimer";
 
               clipContainer.appendChild(audio);
-              clipContainer.appendChild(clipLabel);
               clipContainer.appendChild(deleteButton);
               sound_clips.appendChild(clipContainer);
               console.log(this.donnee);
@@ -297,17 +294,7 @@ h2 {
   padding: 0.5rem 0;
 }
 
-/*
-button {
-  font-size: 1rem;
-  background: #0088cc;
-  text-align: center;
-  color: white;
-  border: none;
-  transition: all 0.2s;
-  padding: 0.5rem;
-}
-*/
+
 button:hover,
 button:focus {
   height: 6vh;
