@@ -89,6 +89,12 @@ button {
   color: #2e3244;
 }
 
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
+}
+
 .home_choix {
   margin: 70px;
 }

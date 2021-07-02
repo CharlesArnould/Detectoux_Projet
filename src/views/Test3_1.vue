@@ -106,4 +106,10 @@ button {
   color: #2e3244;
   box-shadow: 6px 8px 8px #2e3244;
 }
+
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
+}
 </style>
