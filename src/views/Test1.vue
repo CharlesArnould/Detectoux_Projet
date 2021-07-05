@@ -60,12 +60,11 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
+          <br />
           <div class="test1_wrapper_rectangle_form_audio">
-            <section class="main-controls">
-              <canvas class="visualizer" height="60px"></canvas>
+            <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" @click="record()"><b>Enregistrer</b></button>
-            </section>
+            <button id="record" @click="record()"><b>Enregistrer</b></button>
 
             <section id="sound_clips"></section>
             <div class="replay_choix">
@@ -254,7 +253,7 @@ button {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: #2e3244;
-  /* box-shadow: 6px 8px 8px #2e3244; */
+  margin: 10px;
 }
 
 button:hover,
@@ -286,10 +285,6 @@ h2 {
   text-align: center;
   font-weight: normal;
   padding: 0.5rem 0 0 0;
-}
-
-.main-controls {
-  padding: 4px;
 }
 
 /* Make the clips use as much space as possible, and
