@@ -62,11 +62,11 @@
             </select>
           </div>
           <p>
-            Lorsque vous appuierez sur le bouton <b>Enregistrer </b>, vous aurez
-            1 seconde pour enregistrer votre toux. L'enregistrement s'arretera
+            Ensuite, appuyez sur le bouton <b>Enregistrer </b>, vous aurez alors
+            1 seconde pour enregistrer votre toux. L'enregistrement s'arrêtera
             automatiquement, vous pourrez alors cliquer sur le bouton<b>
               Accéder au diagnostic</b
-            >.
+            >. Attention, vous ne pourrez garder qu'un seul enregistrement.
           </p>
           <div class="test1_wrapper_rectangle_form_audio">
             <canvas class="visualizer" height="60px"></canvas>
