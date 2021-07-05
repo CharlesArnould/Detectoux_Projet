@@ -13,7 +13,7 @@
           <div class="test1_wrapper_rectangle_form_fum">
             <label for="fum">Fumeur :&nbsp;</label>
             <select id="fum" v-model="smoker" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="oui">Oui</option>
               <option value="non">Non</option>
             </select>
@@ -22,7 +22,7 @@
           <div class="test1_wrapper_rectangle_form_ant">
             <label for="med">Antécedents médicaux :&nbsp;</label>
             <select id="med" v-model="medhist" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="diabete">Diabète avec complications</option>
               <option value="asthme">
                 Asthme ou maladie pulmonaire chronique
@@ -37,7 +37,7 @@
           <div class="test1_wrapper_rectangle_form_sympt">
             <label for="symp">Symptômes :&nbsp;</label>
             <select id="symp" v-model="symp" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="toux">Toux nouvelle ou aggravée</option>
               <option value="mdg">Mal de gorge</option>
               <option value="ess">Essoufflement</option>
@@ -63,7 +63,7 @@
           </div>
           <p>
             Lorsque vous appuierez sur le bouton <b>Enregistrer </b>, vous aurez
-            1 seconde pour enregistrer votre toux. L'enregistrement s'arretera
+            1 seconde pour enregistrer votre toux. L'enregistrement s'arrêtera
             automatiquement, vous pourrez alors cliquer sur le bouton<b>
               Accéder au diagnostic</b
             >.
@@ -138,8 +138,7 @@ export default {
               let audio_url = URL.createObjectURL(this.blob);
               let audio = new Audio(audio_url);
               audio.setAttribute("controls", 1);
-              deleteButton.innerHTML = "Delete";
-              clipLabel.innerHTML = "Votre toux";
+              deleteButton.innerHTML = "Supprimer";
               clipContainer.appendChild(audio);
               clipContainer.appendChild(clipLabel);
               clipContainer.appendChild(deleteButton);
@@ -224,13 +223,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 .test1_wrapper_rectangle_form_sympt {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 .test1_wrapper_rectangle_form_audio {
   display: flex;
