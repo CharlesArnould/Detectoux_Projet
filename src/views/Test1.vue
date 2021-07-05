@@ -1,3 +1,4 @@
+
 <template>
   <div class="test1">
     <div class="test1_wrapper">
@@ -60,11 +61,17 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
-          <br />
+          <p>
+            Lorsque vous appuierez sur le bouton <b>Enregistrer </b>, vous aurez
+            1 seconde pour enregistrer votre toux. L'enregistrement s'arretera
+            automatiquement, vous pourrez alors cliquer sur le bouton<b>
+              Accéder au diagnostic</b
+            >.
+          </p>
           <div class="test1_wrapper_rectangle_form_audio">
             <canvas class="visualizer" height="60px"></canvas>
 
-            <button id="record" @click="record()"><b>Enregistrer</b></button>
+            <button id="record" @click="record()">Enregistrer</button>
 
             <section id="sound_clips"></section>
             <div class="replay_choix">
@@ -115,17 +122,14 @@ export default {
             record.style.background = "red";
             record.style.color = "black";
             let chuck = [];
-
             mediaRecorder.addEventListener("dataavailable", (e) => {
               chuck.push(e.data);
             });
-
             mediaRecorder.addEventListener("stop", (e) => {
               console.log("recorder stopped");
               const clipContainer = document.createElement("article");
               const clipLabel = document.createElement("p");
               const deleteButton = document.createElement("button");
-
               clipContainer.classList.add("clip");
               this.blob = new Blob(chuck, {
                 type: "audio/mp3;",
@@ -133,10 +137,9 @@ export default {
               console.log(this.blob.type);
               let audio_url = URL.createObjectURL(this.blob);
               let audio = new Audio(audio_url);
-
               audio.setAttribute("controls", 1);
               deleteButton.innerHTML = "Delete";
-
+              clipLabel.innerHTML = "Votre toux";
               clipContainer.appendChild(audio);
               clipContainer.appendChild(clipLabel);
               clipContainer.appendChild(deleteButton);
@@ -176,7 +179,6 @@ export default {
   flex-direction: column;
   /* margin: 20px; */
 }
-
 .test1_étape1 {
   width: 25vw;
   height: 7vh;
@@ -187,7 +189,6 @@ export default {
   flex-direction: column;
   margin: 20px;
 }
-
 .test1_wrapper {
   display: flex;
   justify-content: center;
@@ -196,7 +197,6 @@ export default {
   width: 90vw;
   margin: 50px;
 }
-
 .test1_wrapper_rectangle {
   box-shadow: 6px 8px 8px #2e3244;
   background: #c4c4c4;
@@ -205,39 +205,33 @@ export default {
   align-items: center;
   padding: 40px;
 }
-
 .test1_wrapper_rectangle_form {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-
 .test1_wrapper_rectangle_form_texte {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .test1_wrapper_rectangle_form_fum {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .test1_wrapper_rectangle_form_ant {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
-
 .test1_wrapper_rectangle_form_sympt {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 .test1_wrapper_rectangle_form_audio {
   display: flex;
   justify-content: center;
@@ -255,13 +249,11 @@ button {
   color: #2e3244;
   margin: 10px;
 }
-
 button:hover,
 button:focus {
   height: 6vh;
   width: 51vw;
 }
-
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -273,12 +265,19 @@ p {
   align-items: center;
   justify-content: center;
 }
-
 html,
 body {
   height: 100%;
 }
-
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 h1,
 h2 {
   font-size: 2rem;
@@ -286,7 +285,6 @@ h2 {
   font-weight: normal;
   padding: 0.5rem 0 0 0;
 }
-
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
  * in the available space */
@@ -294,33 +292,35 @@ h2 {
   flex: 1;
   overflow: auto;
 }
-
+/*
+section, article {
+  display: block;
+}*/
 .clip {
   padding-bottom: 1rem;
 }
-
 audio {
   width: 100%;
   display: block;
   margin: 1rem auto 0.5rem;
 }
-
+.clip p {
+  display: inline-block;
+  font-size: 1rem;
+}
 .clip button {
   font-size: 1rem;
   float: right;
 }
-
 button.delete {
   background: #f00;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
 }
-
 input[type="checkbox"] {
   position: absolute;
   top: -100px;
 }
-
 aside {
   position: fixed;
   top: 0;
@@ -332,17 +332,14 @@ aside {
   background-color: #efefef;
   padding: 1rem;
 }
-
 /* Toggled State of information box */
 input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
 }
-
 /* Cursor when clip name is clicked over */
 .clip p {
   cursor: pointer;
 }
-
 /* Adjustments for wider screens */
 @media all and (min-width: 800px) {
   /* Don't take all the space as readability is lost when line length
