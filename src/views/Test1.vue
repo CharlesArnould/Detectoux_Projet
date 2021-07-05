@@ -61,12 +61,17 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
+          <p>
+            Lorsque vous appuierez sur le bouton <b>Enregistrer </b>, vous aurez
+            1 seconde pour enregistrer votre toux. L'enregistrement s'arretera
+            automatiquement, vous pourrez alors cliquer sur le bouton<b>
+              Accéder au diagnostic</b
+            >.
+          </p>
           <div class="test1_wrapper_rectangle_form_audio">
-            <section class="main-controls">
-              <canvas class="visualizer" height="60px"></canvas>
+            <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" @click="record()">Enregistrer</button>
-            </section>
+            <button id="record" @click="record()">Enregistrer</button>
 
             <section id="sound_clips"></section>
             <div class="replay_choix">
@@ -233,6 +238,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+
 button {
   background: #f1895c;
   margin: 5px;
