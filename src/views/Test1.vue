@@ -1,3 +1,4 @@
+
 <template>
   <div class="test1">
     <div class="test1_wrapper">
@@ -12,7 +13,7 @@
           <div class="test1_wrapper_rectangle_form_fum">
             <label for="fum">Fumeur :&nbsp;</label>
             <select id="fum" v-model.trim="modeldata.smoker" v-model="smoker" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="oui">Oui</option>
               <option value="non">Non</option>
             </select>
@@ -21,7 +22,7 @@
           <div class="test1_wrapper_rectangle_form_ant">
             <label for="med">Antécedents médicaux :&nbsp;</label>
             <select id="med" v-model.trim="modeldata.medhist" v-model="medhist" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="diabete">Diabète avec complications</option>
               <option value="asthme">
                 Asthme ou maladie pulmonaire chronique
@@ -36,7 +37,7 @@
           <div class="test1_wrapper_rectangle_form_sympt">
             <label for="symp">Symptômes :&nbsp;</label>
             <select id="symp" v-model.trim="modeldata.symp" v-model="symp" required>
-              <option value="">- Choix -</option>
+              <!-- <option value="">- Choix -</option> -->
               <option value="toux">Toux nouvelle ou aggravée</option>
               <option value="mdg">Mal de gorge</option>
               <option value="ess">Essoufflement</option>
@@ -44,7 +45,7 @@
                 Essoufflement, mal de gorge, maux de corps
               </option>
               <option value="ess_toux">
-                Essoufflement, Toux nouvelle ou aggravée
+                Essoufflement, toux nouvelle ou aggravée
               </option>
               <option value="mdg_pdg_pdo">
                 Mal de gorge, perte du goût, perte de l'odorat
@@ -60,12 +61,17 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
+          <p>
+            Ensuite, appuyez sur le bouton <b>Enregistrer </b>, vous aurez alors
+            1 seconde pour enregistrer votre toux. L'enregistrement s'arrêtera
+            automatiquement, vous pourrez alors cliquer sur le bouton<b>
+              Accéder au diagnostic</b
+            >. Attention, vous ne pourrez garder qu'un seul enregistrement.
+          </p>
           <div class="test1_wrapper_rectangle_form_audio">
-            <section class="main-controls">
-              <canvas class="visualizer" height="60px"></canvas>
+            <canvas class="visualizer" height="60px"></canvas>
 
-              <button id="record" @click="record()">Enregistrer</button>
-            </section>
+            <button id="record" @click="record()">Enregistrer</button>
 
             <section id="sound_clips"></section>
             <div class="replay_choix">
@@ -116,6 +122,7 @@
           navigator.mediaDevices.getUserMedia({
             audio: true
           })
+
             // Success callback
             .then(stream => {
               let mediaRecorder = new MediaRecorder(stream);
@@ -318,16 +325,16 @@
 </script>
 
 <style scoped>
-  .test1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 100vw;
-    flex-direction: column;
-    /* margin: 20px; */
-  }
 
+.test1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+  flex-direction: column;
+  /* margin: 20px; */
+}
 
 .test1_étape1 {
   width: 25vw;
@@ -339,7 +346,6 @@
   flex-direction: column;
   margin: 20px;
 }
-
 .test1_wrapper {
   display: flex;
   justify-content: center;
@@ -348,42 +354,42 @@
   width: 90vw;
   margin: 50px;
 }
-
 .test1_wrapper_rectangle {
   box-shadow: 6px 8px 8px #2e3244;
   background: #c4c4c4;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 40px;
 }
-
 .test1_wrapper_rectangle_form {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-
 .test1_wrapper_rectangle_form_texte {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .test1_wrapper_rectangle_form_fum {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .test1_wrapper_rectangle_form_ant {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
-
 .test1_wrapper_rectangle_form_sympt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.test1_wrapper_rectangle_form_audio {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -398,15 +404,13 @@ button {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: #2e3244;
-  /* box-shadow: 6px 8px 8px #2e3244; */
+  margin: 10px;
 }
-
 button:hover,
 button:focus {
   height: 6vh;
   width: 51vw;
 }
-
 p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -418,23 +422,19 @@ p {
   align-items: center;
   justify-content: center;
 }
-
 html,
 body {
   height: 100%;
 }
-
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
 }
-
 .wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 h1,
 h2 {
   font-size: 2rem;
@@ -442,23 +442,6 @@ h2 {
   font-weight: normal;
   padding: 0.5rem 0 0 0;
 }
-
-.main-controls {
-  padding: 0.5rem 0;
-}
-
-
-button:hover,
-button:focus {
-  height: 6vh;
-  width: 51vw;
-}
-
-button:active {
-  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-  transform: translateY(2px);
-}
-
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
  * in the available space */
@@ -466,43 +449,35 @@ button:active {
   flex: 1;
   overflow: auto;
 }
-
 /*
 section, article {
   display: block;
 }*/
-
 .clip {
   padding-bottom: 1rem;
 }
-
 audio {
   width: 100%;
   display: block;
   margin: 1rem auto 0.5rem;
 }
-
 .clip p {
   display: inline-block;
   font-size: 1rem;
 }
-
 .clip button {
   font-size: 1rem;
   float: right;
 }
-
 button.delete {
   background: #f00;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
 }
-
 input[type="checkbox"] {
   position: absolute;
   top: -100px;
 }
-
 aside {
   position: fixed;
   top: 0;
@@ -514,28 +489,14 @@ aside {
   background-color: #efefef;
   padding: 1rem;
 }
-
-/*
-aside p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-aside a {
-  color: #666;
-}
-*/
 /* Toggled State of information box */
 input[type="checkbox"]:checked ~ aside {
   transform: translateX(0);
 }
-
 /* Cursor when clip name is clicked over */
-
 .clip p {
   cursor: pointer;
 }
-
 /* Adjustments for wider screens */
 @media all and (min-width: 800px) {
   /* Don't take all the space as readability is lost when line length
