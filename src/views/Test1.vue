@@ -60,19 +60,14 @@
               <option value="aucun">Aucun</option>
             </select>
           </div>
-          <br />
-          <div class="wrapper">
+          <div class="test1_wrapper_rectangle_form_audio">
             <section class="main-controls">
               <canvas class="visualizer" height="60px"></canvas>
-              <div id="buttons">
-                <button id="record" @click="record()">Record</button>
-              </div>
+
+              <button id="record" @click="record()">Enregistrer</button>
             </section>
 
-            <section id="sound_clips">
-
-
-            </section>
+            <section id="sound_clips"></section>
             <div class="replay_choix">
               <div class="replay_choix_button">
                 <button @click="predict()">
@@ -334,222 +329,193 @@
   }
 
 
-  .test1_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    width: 90vw;
-    margin: 50px;
-  }
-
-  .test1_wrapper_rectangle {
-    box-shadow: 6px 8px 8px #2e3244;
-    background: #c4c4c4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-  }
-
-  .test1_wrapper_rectangle_form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .test1_wrapper_rectangle_form_texte {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .test1_wrapper_rectangle_form_fum {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .test1_wrapper_rectangle_form_ant {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .test1_wrapper_rectangle_form_sympt {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  button {
-    background: #f1895c;
-    margin: 5px;
-    height: 6vh;
-    width: 50vw;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    color: #2e3244;
-  }
-
-  button:hover,
-  button:focus {
-    height: 6vh;
-    width: 51vw;
-  }
-
-  p {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    float: left;
-    color: #2e3244;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-
-  html,
-  body {
-    height: 100%;
-  }
-
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.8rem;
-  }
-
-  .wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  h1,
-  h2 {
-    font-size: 2rem;
-    text-align: center;
-    font-weight: normal;
-    padding: 0.5rem 0 0 0;
-  }
-
-  .main-controls {
-    padding: 0.5rem 0;
-  }
-
-  canvas {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  #buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  #buttons button {
-    font-size: 1rem;
-    padding: 1rem;
-    width: calc(50% - 0.25rem);
-  }
-
-  /*
-button {
-  font-size: 1rem;
-  background: #0088cc;
-  text-align: center;
-  color: white;
-  border: none;
-  transition: all 0.2s;
-  padding: 0.5rem;
+.test1_étape1 {
+  width: 25vw;
+  height: 7vh;
+  background: #f1895c;
+  box-shadow: 6px 8px 8px #2e3244;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
-*/
-  button:hover,
-  button:focus {
-    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
-    background: #0ae;
-  }
 
-  button:active {
-    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
-    transform: translateY(2px);
-  }
+.test1_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 90vw;
+  margin: 50px;
+}
+
+.test1_wrapper_rectangle {
+  box-shadow: 6px 8px 8px #2e3244;
+  background: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.test1_wrapper_rectangle_form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.test1_wrapper_rectangle_form_texte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test1_wrapper_rectangle_form_fum {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test1_wrapper_rectangle_form_ant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.test1_wrapper_rectangle_form_sympt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  background: #f1895c;
+  margin: 5px;
+  height: 6vh;
+  width: 50vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #2e3244;
+  /* box-shadow: 6px 8px 8px #2e3244; */
+}
+
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
+}
+
+p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  float: left;
+  color: #2e3244;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: normal;
+  padding: 0.5rem 0 0 0;
+}
+
+.main-controls {
+  padding: 0.5rem 0;
+}
 
 
-  /* Make the clips use as much space as possible, and
+button:hover,
+button:focus {
+  height: 6vh;
+  width: 51vw;
+}
+
+button:active {
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(2px);
+}
+
+/* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
  * in the available space */
-  .sound-clips {
-    flex: 1;
-    overflow: auto;
-  }
+.sound-clips {
+  flex: 1;
+  overflow: auto;
+}
 
-  /*
+/*
 section, article {
   display: block;
 }*/
 
-  .clip {
-    padding-bottom: 1rem;
-  }
+.clip {
+  padding-bottom: 1rem;
+}
 
-  audio {
-    width: 100%;
-    display: block;
-    margin: 1rem auto 0.5rem;
-  }
+audio {
+  width: 100%;
+  display: block;
+  margin: 1rem auto 0.5rem;
+}
 
-  .clip p {
-    display: inline-block;
-    font-size: 1rem;
-  }
+.clip p {
+  display: inline-block;
+  font-size: 1rem;
+}
 
-  .clip button {
-    font-size: 1rem;
-    float: right;
-  }
+.clip button {
+  font-size: 1rem;
+  float: right;
+}
 
-  button.delete {
-    background: #f00;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
-  }
+button.delete {
+  background: #f00;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
 
-  /* Checkbox hack to control information box display */
+input[type="checkbox"] {
+  position: absolute;
+  top: -100px;
+}
 
-  label {
-    font-size: 3rem;
-    position: absolute;
-    top: 2px;
-    right: 3px;
-    z-index: 5;
-    cursor: pointer;
-    background-color: black;
-    border-radius: 10px;
-  }
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+  transition: 0.3s all ease-out;
+  background-color: #efefef;
+  padding: 1rem;
+}
 
-  input[type=checkbox] {
-    position: absolute;
-    top: -100px;
-  }
-
-  aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateX(100%);
-    transition: 0.3s all ease-out;
-    background-color: #efefef;
-    padding: 1rem;
-  }
-
-  /*
+/*
 aside p {
   font-size: 1.2rem;
   margin: 0.5rem 0;
@@ -559,26 +525,25 @@ aside a {
   color: #666;
 }
 */
-  /* Toggled State of information box */
-  input[type=checkbox]:checked~aside {
-    transform: translateX(0);
-  }
+/* Toggled State of information box */
+input[type="checkbox"]:checked ~ aside {
+  transform: translateX(0);
+}
 
-  /* Cursor when clip name is clicked over */
+/* Cursor when clip name is clicked over */
 
-  .clip p {
-    cursor: pointer;
-  }
+.clip p {
+  cursor: pointer;
+}
 
-  /* Adjustments for wider screens */
-  @media all and (min-width: 800px) {
-
-    /* Don't take all the space as readability is lost when line length
+/* Adjustments for wider screens */
+@media all and (min-width: 800px) {
+  /* Don't take all the space as readability is lost when line length
      goes past a certain size */
-    .wrapper {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+  .wrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
   }
+}
 </style>
