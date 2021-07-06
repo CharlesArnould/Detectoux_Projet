@@ -11,7 +11,7 @@
           </div>
           <div class="test1_wrapper_rectangle_form_fum">
             <label for="fum">Fumeur :&nbsp;</label>
-            <select id="fum" v-model="smoker" required>
+            <select id="fum" v-model.trim="modeldata.smoker" v-model="smoker" required>
               <option value="">- Choix -</option>
               <option value="oui">Oui</option>
               <option value="non">Non</option>
@@ -20,7 +20,7 @@
           <br />
           <div class="test1_wrapper_rectangle_form_ant">
             <label for="med">Antécedents médicaux :&nbsp;</label>
-            <select id="med" v-model="medhist" required>
+            <select id="med" v-model.trim="modeldata.medhist" v-model="medhist" required>
               <option value="">- Choix -</option>
               <option value="diabete">Diabète avec complications</option>
               <option value="asthme">
@@ -35,7 +35,7 @@
           <br />
           <div class="test1_wrapper_rectangle_form_sympt">
             <label for="symp">Symptômes :&nbsp;</label>
-            <select id="symp" v-model="symp" required>
+            <select id="symp" v-model.trim="modeldata.symp" v-model="symp" required>
               <option value="">- Choix -</option>
               <option value="toux">Toux nouvelle ou aggravée</option>
               <option value="mdg">Mal de gorge</option>
@@ -70,11 +70,9 @@
             <section id="sound_clips"></section>
             <div class="replay_choix">
               <div class="replay_choix_button">
-                <router-link to="/Test3_1">
-                  <button>
-                    <b>Accéder au diagnostic</b>
-                  </button>
-                </router-link>
+                <button @click="predict()">
+                  <b>Accéder au diagnostic</b>
+                </button>
               </div>
             </div>
             <br />
@@ -86,95 +84,250 @@
 </template>
 
 <script>
-export default {
-  name: "Test1",
-  components: {},
-  data() {
-    return {
-      smoker: null,
-      medhist: null,
-      symp: null,
-      blob: null,
-    };
-  },
-  mounted() {
-    console.log(navigator);
-  },
-  methods: {
-    record() {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({
-            audio: true,
-          })
-          // Success callback
-          .then((stream) => {
-            let mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start();
-            console.log(mediaRecorder.state);
-            console.log("recorder started");
-            record.style.background = "red";
-            record.style.color = "black";
-            let chuck = [];
-
-            mediaRecorder.addEventListener("dataavailable", (e) => {
-              chuck.push(e.data);
-            });
-
-            mediaRecorder.addEventListener("stop", (e) => {
-              console.log("recorder stopped");
-              const clipContainer = document.createElement("article");
-              const deleteButton = document.createElement("button");
-
-              clipContainer.classList.add("clip");
-              this.blob = new Blob(chuck, {
-                type: "audio/mp3;",
-              });
-              console.log(this.blob.type);
-              let audio_url = URL.createObjectURL(this.blob);
-              let audio = new Audio(audio_url);
-
-              audio.setAttribute("controls", 1);
-              deleteButton.innerHTML = "Supprimer";
-
-              clipContainer.appendChild(audio);
-              clipContainer.appendChild(deleteButton);
-              sound_clips.appendChild(clipContainer);
-              console.log(this.donnee);
-              deleteButton.onclick = function (e) {
-                let evtTgt = e.target;
-                evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-              };
-            });
-            setTimeout(() => {
-              mediaRecorder.stop();
-            }, 2000);
-          })
-          // Error callback
-          .catch(function (err) {
-            console.log("The following getUserMedia error occurred: " + err);
-          });
+  import axios from 'axios'
+  export default {
+    name: "Test1",
+    components: {},
+    data() {
+      return {
+        modeldata: {
+                smoker: null,
+                medhist: null,
+                symp: null,
+                audio: null,
+                maxmfcc:null,
+                stdmfcc: null,
+                maxmagspec: null,
+                meanmagspec: null,
+                maxfreqmagspec: null,
+                maxfreqreg: null,
+                maxfreqfft: null
+            },
+        APIResult : []
       }
     },
-  },
-  computed: {
-    donnee: function () {
-      return [this.smoker, this.medhist, this.symp, this.blob];
+    mounted() {
+      console.log(navigator)
     },
-  },
-};
+    methods: {
+      //Function to use the microphone and record sound
+      record() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({
+            audio: true
+          })
+            // Success callback
+            .then(stream => {
+              let mediaRecorder = new MediaRecorder(stream);
+              mediaRecorder.start();
+              console.log(mediaRecorder.state);
+              console.log("recorder started");
+              record.style.background = "red";
+              record.style.color = "black";
+              let chuck = []
+
+              mediaRecorder.addEventListener("dataavailable", e => {
+                chuck.push(e.data)
+              })
+
+              mediaRecorder.addEventListener("stop", e => {
+                console.log("recorder stopped");
+                const clipContainer = document.createElement('article');
+                const deleteButton = document.createElement('button');
+
+                clipContainer.classList.add('clip');
+                let blob = new Blob(chuck, {
+                  'type': 'audio/mpeg-3;'
+                })
+                let audio_url = URL.createObjectURL(blob)
+                this.modeldata.audio = new Audio(audio_url)
+
+                this.modeldata.audio.setAttribute("controls", 1)
+
+                console.log(this.modeldata.audio.src)
+                deleteButton.innerHTML = "Supprimer";
+
+                clipContainer.appendChild(this.modeldata.audio);
+                clipContainer.appendChild(deleteButton);
+                sound_clips.appendChild(clipContainer);
+                console.log(this.donnee)
+                deleteButton.onclick = function (e) {
+                  let evtTgt = e.target;
+                  evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+                }
+              })
+              setTimeout(() => {
+                mediaRecorder.stop();
+              }, 2000);
+            })
+            // Error callback
+            .catch(function (err) {
+              console.log('The following getUserMedia error occurred: ' + err);
+            });
+        }
+      },
+      
+      mp3Build() {
+        try {
+            var process = new ffmpeg('sound.data');
+            process.then(function (audio) {
+                // Callback mode.
+                audio.fnExtractSoundToMP3('sound.mp3', function (error, file) {
+                    if (!error) {
+                        console.log('Audio file: ' + file);
+                //audioDownload.href = player.src;
+                audioDownload.href = player.srcObject;
+                audioDownload.download = 'sound.mp3';
+                audioDownload.innerHTML = 'Download';
+              } else {
+                console.log('Error-fnExtractSoundToMP3: ' + error);
+              }
+                });
+            }, function (err) {
+                console.log('Error: ' + err);
+            });
+        } catch (e) {
+            console.log(e.code);
+            console.log(e.msg);
+        }
+      },
+
+      //prediction of Covid
+      async predict(){
+        const prediction = await axios.get('http://127.0.0.1:5000/model', {
+          params:{
+            smoker: this.modeldata.smoker,
+            medhist: this.modeldata.medhist,
+            symp: this.modeldata.symp,
+            maxmfcc:this.modeldata.maxmfcc,
+            stdmfcc: this.modeldata.stdmfcc,
+            maxmagspec: this.modeldata.maxmagspec,
+            meanmagspec: this.modeldata.meanmagspec,
+            maxfreqmagspec: this.modeldata.maxfreqmagspec,
+            maxfreqreg: this.modeldata.maxfreqreg,
+            maxfreqfft: this.modeldata.maxfreqfft
+          }
+        })
+        prediction = prediction.data
+        console.log(prediction)
+
+        /* console.log("Recieved data successfully");
+        this.modeldata.APIResult = response.data;
+        console.log(response.data);
+        if (this.modeldata.APIResult==1) this.$router.push('/Test3_1')
+        else this.$router.push('/Test3_2') */
+      },
+      async sigTreat() {
+        const res = await axios.get('http://127.0.0.1:5000/signal', {
+          params:{
+            audio: this.modeldata.audio
+          }
+        })
+        res = res.data
+        console.log(res)
+      }
+    },
+    computed:{
+      donnee:function(){
+        //change string value to numeric value for model interpretation
+        //medical history to num
+        switch(this.modeldata.medhist){
+          case "diabete":
+            this.modeldata.medhist=1;
+            break;
+          case 'asthme':
+            this.modeldata.medhist=2
+            break;
+          case 'ins-card':
+            this.modeldata.medhist=3;
+            break;
+          default:
+            this.modeldata.medhist=0;
+            break;
+        }
+        //Smoker to num
+        switch(this.modeldata.smoker){
+          case "oui":
+            this.modeldata.smoker=1;
+            break;
+          default:
+            this.modeldata.smoker=0;
+            break;
+        }
+        //Symptom to num
+        switch(this.modeldata.symp){
+          case 'toux':
+            this.modeldata.symp=1;
+            break;
+          case 'mdg':
+            this.modeldata.symp=2;
+            break;
+          case 'ess':
+            this.modeldata.symp=3;
+            break;
+          case 'ess_mdg_mdc':
+            this.modeldata.symp=4;
+            break;
+          case 'ess_toux':
+            this.modeldata.symp=5;
+            break;
+          case 'mdg_pdg_pdo':
+            this.modeldata.symp=6;
+            break;
+          case 'fvr_fr_toux_mdg':
+            this.modeldata.symp=7;
+            break;
+          case 'fvr_fr_toux_mdg_pdg_pdo':
+            this.modeldata.symp=8;
+            break;
+          default:
+            this.modeldata.symp=0;
+            break;
+        }
+
+        /*
+        getAPI
+          .get("/signal",{
+            params:{
+              audio : this.modeldata.audio,
+            }
+          })
+          .then(response =>{
+            console.log("Received audio successfully")
+            this.modeldata.maxmfcc, this.modeldata.stdmfcc, this.modeldata.maxmagspec, this.modeldata.meanmagspec, this.modeldata.maxfreqmagspec, this.modeldata.maxfreqreg, this.modeldata.maxfreqfft=response.data
+            console.log(response.data)
+          })
+          .catch(err=>{
+                    console.log(err);
+                });*/
+
+
+        return [this.modeldata.smoker,this.modeldata.medhist,this.modeldata.symp,this.modeldata.maxmfcc, this.modeldata.stdmfcc, this.modeldata.maxmagspec, this.modeldata.meanmagspec, this.modeldata.maxfreqmagspec, this.modeldata.maxfreqreg, this.modeldata.maxfreqfft]
+      },
+      modeldataaudio:function() {
+        return this.modeldata.audio
+      }      
+    },
+    watch: {
+      modeldataaudio: function () {
+        console.log('wassup')
+        if(this.modeldata.audio) this.sigTreat()
+      }
+    }
+  }
 </script>
 
 <style scoped>
-.test1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-  width: 100vw;
-  flex-direction: column;
-  /* margin: 20px; */
-}
+  .test1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    flex-direction: column;
+    /* margin: 20px; */
+  }
+
 
 .test1_étape1 {
   width: 25vw;
